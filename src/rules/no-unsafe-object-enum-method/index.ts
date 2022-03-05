@@ -1,10 +1,11 @@
 import { AST_NODE_TYPES, ESLintUtils, TSESTree } from "@typescript-eslint/utils";
-import type ts from "typescript";
+import ts from "typescript";
 import { createRule, possiblyContainsUnknownProperties } from "../utils";
 
 type Options = [
   {
-    allowIndexSignatures: boolean;
+    allowIndexSignatures?: boolean;
+    allowNonPrimitives?: boolean;
   }
 ];
 
@@ -31,6 +32,9 @@ export default createRule<Options, MessageIds>({
           allowIndexSignatures: {
             type: "boolean",
           },
+          allowNonPrimitives: {
+            type: "boolean",
+          },
         },
       },
     ],
@@ -38,6 +42,7 @@ export default createRule<Options, MessageIds>({
   defaultOptions: [
     {
       allowIndexSignatures: true,
+      allowNonPrimitives: true,
     },
   ],
   create: (context, [options]) => {
@@ -61,13 +66,14 @@ export default createRule<Options, MessageIds>({
           if (!possiblyContainsUnknownProperties(arg)) {
             return;
           }
-          // Mostly safe if the argument has an index signature.
-          if (options.allowIndexSignatures) {
-            const tsArg = services.esTreeNodeToTSNodeMap.get(arg);
-            const type = checker.getTypeAtLocation(tsArg);
-            if (hasIndexSignature(checker, type)) {
-              return;
-            }
+          // Mostly safe if the argument has an index signature or is the non-primitive type.
+          const tsArg = services.esTreeNodeToTSNodeMap.get(arg);
+          const type = checker.getTypeAtLocation(tsArg);
+          if (options.allowIndexSignatures && hasIndexSignature(checker, type)) {
+            return;
+          }
+          if (options.allowNonPrimitives && isNonPrimitiveType(type)) {
+            return;
           }
         }
         context.report({
@@ -115,4 +121,11 @@ function matchObjectEnumMethod(node: TSESTree.Expression): ObjectEnumMethod | un
 
 function hasIndexSignature(checker: ts.TypeChecker, type: ts.Type): boolean {
   return checker.getIndexInfosOfType(type).length > 0;
+}
+
+/**
+ * Checks if the type is the non-primitive type i.e. `object`.
+ */
+function isNonPrimitiveType(type: ts.Type): boolean {
+  return (type.flags & ts.TypeFlags.NonPrimitive) !== 0;
 }
