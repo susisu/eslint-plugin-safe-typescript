@@ -1,4 +1,5 @@
 import { AST_NODE_TYPES, ESLintUtils, TSESTree } from "@typescript-eslint/utils";
+import ts from "typescript";
 
 // eslint-disable-next-line new-cap
 export const createRule = ESLintUtils.RuleCreator(
@@ -6,6 +7,9 @@ export const createRule = ESLintUtils.RuleCreator(
     `https://github.com/susisu/eslint-plugin-safe-typescript/src/rules/${ruleName}/README.md`
 );
 
+/**
+ * Checks if the value of the expression possibly contains properties that do not appear in its type.
+ */
 export function possiblyContainsUnknownProperties(node: TSESTree.Expression): boolean {
   if (node.type !== AST_NODE_TYPES.ObjectExpression) {
     return true;
@@ -17,4 +21,25 @@ export function possiblyContainsUnknownProperties(node: TSESTree.Expression): bo
       return false;
     }
   });
+}
+
+/**
+ * Checks if the type is the any type.
+ */
+export function isAnyType(type: ts.Type): boolean {
+  return (type.flags & ts.TypeFlags.Any) !== 0;
+}
+
+/**
+ * Checks if the type is the non-primitive type i.e. `object`.
+ */
+export function isNonPrimitiveType(type: ts.Type): boolean {
+  return (type.flags & ts.TypeFlags.NonPrimitive) !== 0;
+}
+
+/**
+ * Checks if the type has an index signature.
+ */
+export function hasIndexSignature(checker: ts.TypeChecker, type: ts.Type): boolean {
+  return checker.getIndexInfosOfType(type).length > 0;
 }

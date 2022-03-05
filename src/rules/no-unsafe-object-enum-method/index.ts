@@ -1,6 +1,11 @@
 import { AST_NODE_TYPES, ESLintUtils, TSESTree } from "@typescript-eslint/utils";
-import ts from "typescript";
-import { createRule, possiblyContainsUnknownProperties } from "../utils";
+import {
+  createRule,
+  hasIndexSignature,
+  isAnyType,
+  isNonPrimitiveType,
+  possiblyContainsUnknownProperties,
+} from "../utils";
 
 type Options = [
   {
@@ -112,17 +117,4 @@ function matchObjectEnumMethod(node: TSESTree.Expression): ObjectEnumMethod | un
   } else {
     return undefined;
   }
-}
-
-function hasIndexSignature(checker: ts.TypeChecker, type: ts.Type): boolean {
-  return checker.getIndexInfosOfType(type).length > 0;
-}
-
-function isAnyType(type: ts.Type): boolean {
-  return (type.flags & ts.TypeFlags.Any) !== 0;
-}
-
-/** Checks if the type is the non-primitive type i.e. `object`. */
-function isNonPrimitiveType(type: ts.Type): boolean {
-  return (type.flags & ts.TypeFlags.NonPrimitive) !== 0;
 }
