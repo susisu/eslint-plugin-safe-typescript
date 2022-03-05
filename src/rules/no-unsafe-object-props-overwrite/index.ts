@@ -46,7 +46,7 @@ export default createRule<Options, MessageIds>({
       if (!testObjectAssign(node.callee)) {
         return;
       }
-      // Start from 1 because it's safe if the first argument has possibly unknown properties.
+      // Start from 1 because it's safe if the first argument possibly contains unknown properties.
       for (let i = 1; i < node.arguments.length; i++) {
         const arg = node.arguments[i];
         // Safe if only contains known properties.
