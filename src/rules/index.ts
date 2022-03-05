@@ -1,7 +1,7 @@
-import noUnsafeObjectEnum from "./no-unsafe-object-enum";
-import noUnsafeObjectSpread from "./no-unsafe-object-spread";
+import noUnsafeObjectEnumMethod from "./no-unsafe-object-enum-method";
+import noUnsafeObjectPropsOverwrite from "./no-unsafe-object-props-overwrite";
 
 export default {
-  "no-unsafe-object-enum": noUnsafeObjectEnum,
-  "no-unsafe-object-spread": noUnsafeObjectSpread,
+  "no-unsafe-object-enum-method": noUnsafeObjectEnumMethod,
+  "no-unsafe-object-props-overwrite": noUnsafeObjectPropsOverwrite,
 };

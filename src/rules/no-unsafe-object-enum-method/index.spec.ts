@@ -11,7 +11,7 @@ const ruleTester = new ESLintUtils.RuleTester({
   parser: "@typescript-eslint/parser",
 });
 
-ruleTester.run("no-unsafe-object-enum", rule, {
+ruleTester.run("no-unsafe-object-enum-method", rule, {
   valid: [
     // OK if all the argument's properties are known
     `Object.keys({ a: 0, b: 1, ...{ c: 2, d: 3, ...{ e: 4, f: 5 } } })`,

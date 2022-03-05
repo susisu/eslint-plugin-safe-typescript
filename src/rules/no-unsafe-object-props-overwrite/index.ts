@@ -6,11 +6,11 @@ type Options = [];
 type MessageIds = "possiblyUnsafe";
 
 export default createRule<Options, MessageIds>({
-  name: "no-unsafe-object-spread",
+  name: "no-unsafe-object-props-overwrite",
   meta: {
     type: "suggestion",
     docs: {
-      description: "Disallow unsafe use of the spread syntax in object literals",
+      description: "Disallow possibly unsafe overwrites of object properties",
       recommended: "warn",
     },
     messages: {

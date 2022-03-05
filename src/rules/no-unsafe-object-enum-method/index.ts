@@ -11,11 +11,11 @@ type Options = [
 type MessageIds = "noEnumMethod";
 
 export default createRule<Options, MessageIds>({
-  name: "no-unsafe-object-enum",
+  name: "no-unsafe-object-enum-method",
   meta: {
     type: "suggestion",
     docs: {
-      description: "Disallow unsafe property enumeration of objects",
+      description: "Disallow possibly unsafe property enumeration methods of Object",
       recommended: "warn",
       requiresTypeChecking: true,
     },
