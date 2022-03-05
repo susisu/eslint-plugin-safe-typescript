@@ -1,7 +1,7 @@
 {
   "name": "@susisu/eslint-plugin-safe-typescript",
   "version": "0.0.0",
-  "description": "ESLint plugin safer TypeScript",
+  "description": "ESLint plugin that makes your TypeScript code safer",
   "repository": "https://github.com/susisu/eslint-plugin-safe-typescript.git",
   "author": "Susisu <susisu2413@yahoo.co.jp>",
   "license": "MIT",

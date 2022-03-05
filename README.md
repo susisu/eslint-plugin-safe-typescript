@@ -2,6 +2,10 @@
 
 [![CI](https://github.com/susisu/eslint-plugin-safe-typescript/workflows/CI/badge.svg)](https://github.com/susisu/eslint-plugin-safe-typescript/actions?query=workflow%3ACI)
 
+ESLint plugin that makes your TypeScript code safer
+
+## Installation
+
 ``` shell
 npm i --save-dev @susisu/eslint-plugin-safe-typescript
 # or
