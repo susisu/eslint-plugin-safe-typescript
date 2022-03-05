@@ -5,7 +5,6 @@ import { createRule, possiblyContainsUnknownProperties } from "../utils";
 type Options = [
   {
     allowIndexSignatures?: boolean;
-    allowNonPrimitives?: boolean;
   }
 ];
 
@@ -32,9 +31,6 @@ export default createRule<Options, MessageIds>({
           allowIndexSignatures: {
             type: "boolean",
           },
-          allowNonPrimitives: {
-            type: "boolean",
-          },
         },
       },
     ],
@@ -42,7 +38,6 @@ export default createRule<Options, MessageIds>({
   defaultOptions: [
     {
       allowIndexSignatures: true,
-      allowNonPrimitives: true,
     },
   ],
   create: (context, [options]) => {
@@ -69,10 +64,10 @@ export default createRule<Options, MessageIds>({
           // Mostly safe if the argument has an index signature or is the non-primitive type.
           const tsArg = services.esTreeNodeToTSNodeMap.get(arg);
           const type = checker.getTypeAtLocation(tsArg);
-          if (options.allowIndexSignatures && hasIndexSignature(checker, type)) {
+          if (isAnyType(type) || isNonPrimitiveType(type)) {
             return;
           }
-          if (options.allowNonPrimitives && isNonPrimitiveType(type)) {
+          if (options.allowIndexSignatures && hasIndexSignature(checker, type)) {
             return;
           }
         }
@@ -123,9 +118,11 @@ function hasIndexSignature(checker: ts.TypeChecker, type: ts.Type): boolean {
   return checker.getIndexInfosOfType(type).length > 0;
 }
 
-/**
- * Checks if the type is the non-primitive type i.e. `object`.
- */
+function isAnyType(type: ts.Type): boolean {
+  return (type.flags & ts.TypeFlags.Any) !== 0;
+}
+
+/** Checks if the type is the non-primitive type i.e. `object`. */
 function isNonPrimitiveType(type: ts.Type): boolean {
   return (type.flags & ts.TypeFlags.NonPrimitive) !== 0;
 }

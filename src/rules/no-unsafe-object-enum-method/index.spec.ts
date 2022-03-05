@@ -15,6 +15,15 @@ ruleTester.run("no-unsafe-object-enum-method", rule, {
   valid: [
     // OK if all the argument's properties are known
     `Object.keys({ a: 0, b: 1, ...{ c: 2, d: 3, ...{ e: 4, f: 5 } } })`,
+    // OK if the argument's type is any or non-primitive
+    code`
+      declare const x: any;
+      Object.keys(x);
+    `,
+    code`
+      declare const x: object;
+      Object.keys(x);
+    `,
     // OK if the argument's type has an index signature
     code`
       declare const x: { [key: string]: number };
@@ -26,11 +35,6 @@ ruleTester.run("no-unsafe-object-enum-method", rule, {
     `,
     code`
       declare const x: { [key: symbol]: number };
-      Object.keys(x);
-    `,
-    // OK if the argument's type is object (non-primitive)
-    code`
-      declare const x: object;
       Object.keys(x);
     `,
   ],
@@ -116,22 +120,6 @@ ruleTester.run("no-unsafe-object-enum-method", rule, {
         Object.keys(x);
       `,
       options: [{ allowIndexSignatures: false }],
-      errors: [
-        {
-          messageId: "noEnumMethod",
-          data: { method: "keys" },
-          line: 2,
-          column: 1,
-        },
-      ],
-    },
-    // Error if the argument's type is the non-primitive type but it is not allowed by the option
-    {
-      code: code`
-        declare const x: object;
-        Object.keys(x);
-      `,
-      options: [{ allowNonPrimitives: false }],
       errors: [
         {
           messageId: "noEnumMethod",
