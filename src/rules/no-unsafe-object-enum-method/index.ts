@@ -66,12 +66,13 @@ export default createRule<Options, MessageIds>({
           if (!possiblyContainsUnknownProperties(arg)) {
             return;
           }
-          // Mostly safe if the argument has an index signature or is the non-primitive type.
           const tsArg = services.esTreeNodeToTSNodeMap.get(arg);
           const type = checker.getTypeAtLocation(tsArg);
+          // The enumeration methods work propertly for the any and non-primitive types.
           if (isAnyType(type) || isNonPrimitiveType(type)) {
             return;
           }
+          // Mostly safe if the argument has an index signature.
           if (options.allowIndexSignatures && hasIndexSignature(checker, type)) {
             return;
           }
