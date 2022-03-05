@@ -1,5 +1,5 @@
-import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
-import { createRule } from "../utils";
+import { AST_NODE_TYPES } from "@typescript-eslint/utils";
+import { createRule, possiblyContainsUnknownProperties } from "../utils";
 
 type Options = [];
 
@@ -42,16 +42,3 @@ export default createRule<Options, MessageIds>({
     },
   }),
 });
-
-function possiblyContainsUnknownProperties(node: TSESTree.Expression): boolean {
-  if (node.type !== AST_NODE_TYPES.ObjectExpression) {
-    return true;
-  }
-  return node.properties.some(prop => {
-    if (prop.type === AST_NODE_TYPES.SpreadElement) {
-      return possiblyContainsUnknownProperties(prop.argument);
-    } else {
-      return false;
-    }
-  });
-}

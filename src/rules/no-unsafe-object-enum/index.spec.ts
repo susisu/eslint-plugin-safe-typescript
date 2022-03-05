@@ -13,6 +13,8 @@ const ruleTester = new ESLintUtils.RuleTester({
 
 ruleTester.run("no-unsafe-object-enum", rule, {
   valid: [
+    // OK if all the argument's properties are known
+    `Object.keys({ a: 0, b: 1, ...{ c: 2, d: 3, ...{ e: 4, f: 5 } } })`,
     // OK if the argument's type has an index signature
     code`
       declare const x: { [key: string]: number };
@@ -28,6 +30,37 @@ ruleTester.run("no-unsafe-object-enum", rule, {
     `,
   ],
   invalid: [
+    // Error if the argument possibly has unknown properties
+    {
+      code: code`
+        declare const x: { a: number; b: number };
+        Object.keys({ a: 0, b: 1, ...{ ...x, c: 1, d: 2 } });
+      `,
+      errors: [
+        {
+          messageId: "noEnumMethod",
+          data: { method: "keys" },
+          line: 2,
+          column: 1,
+        },
+      ],
+    },
+    {
+      // In this case, the argument's type does not have an index signature,
+      // and thus the argument has possibly unknown properties.
+      code: code`
+        declare const x: { [key: string]: number };
+        Object.keys({ a: 0, b: 1, ...{ ...x, c: 1, d: 2 } });
+      `,
+      errors: [
+        {
+          messageId: "noEnumMethod",
+          data: { method: "keys" },
+          line: 2,
+          column: 1,
+        },
+      ],
+    },
     // Error if the argument's type does not have an index signature
     {
       code: code`

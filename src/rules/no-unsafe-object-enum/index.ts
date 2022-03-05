@@ -1,6 +1,6 @@
 import { AST_NODE_TYPES, ESLintUtils, TSESTree } from "@typescript-eslint/utils";
 import type ts from "typescript";
-import { createRule } from "../utils";
+import { createRule, possiblyContainsUnknownProperties } from "../utils";
 
 type Options = [
   {
@@ -53,11 +53,21 @@ export default createRule<Options, MessageIds>({
         if (!arg) {
           return;
         }
-        if (options.allowIndexSignatures) {
-          const tsArg = services.esTreeNodeToTSNodeMap.get(arg);
-          const type = checker.getTypeAtLocation(tsArg);
-          if (hasIndexSignature(checker, type)) {
+        // We do not consider the following cases:
+        // - Object.keys(...[{ a: 0, b: 1 }])
+        // - declare const x: { [key: string]: number }; Object.keys(...[x])
+        if (arg.type !== AST_NODE_TYPES.SpreadElement) {
+          // Safe if only contains known properties.
+          if (!possiblyContainsUnknownProperties(arg)) {
             return;
+          }
+          // Mostly safe if the argument has an index signature.
+          if (options.allowIndexSignatures) {
+            const tsArg = services.esTreeNodeToTSNodeMap.get(arg);
+            const type = checker.getTypeAtLocation(tsArg);
+            if (hasIndexSignature(checker, type)) {
+              return;
+            }
           }
         }
         context.report({

@@ -8,45 +8,44 @@ const ruleTester = new ESLintUtils.RuleTester({
 ruleTester.run("no-unsafe-object-spread", rule, {
   valid: [
     // OK at the beginning of the object literal
-    `const x = { ...y }`,
-    `const x = { ...y, a: 0, b: 1 }`,
+    `({ ...x })`,
+    `({ ...x, a: 0, b: 1 })`,
     // OK if all properties are known
-    `const x = { a: 0, b: 1, ...{ c: 2, d: 3 } }`,
-    `const x = { a: 0, b: 1, ...{ c: 2, d: 3, ...{ e: 4, f: 5 } } }`,
+    `({ a: 0, b: 1, ...{ c: 2, d: 3, ...{ e: 4, f: 5 } } })`,
     // OK in arrays or function calls
-    `const x = [0, 1, ...y]`,
-    `const x = f(0, 1, ...y)`,
+    `[0, 1, ...x]`,
+    `f(0, 1, ...x)`,
   ],
   invalid: [
     // Error at the middle or end of the object literal
     {
-      code: `const x = { a: 0, ...y, b: 1 }`,
+      code: `({ a: 0, ...x, b: 1 })`,
       errors: [
         {
           messageId: "possiblyUnsafe",
           line: 1,
-          column: 19,
+          column: 10,
         },
       ],
     },
     {
-      code: `const x = { a: 0, b: 1, ...y }`,
+      code: `({ a: 0, b: 1, ...x })`,
       errors: [
         {
           messageId: "possiblyUnsafe",
           line: 1,
-          column: 25,
+          column: 16,
         },
       ],
     },
     // Error if possibly contains unknown properties
     {
-      code: `const x = { a: 0, b: 1, ...{ ...y, c: 1, d: 2 } }`,
+      code: `({ a: 0, b: 1, ...{ ...x, c: 1, d: 2 } })`,
       errors: [
         {
           messageId: "possiblyUnsafe",
           line: 1,
-          column: 25,
+          column: 16,
         },
       ],
     },
