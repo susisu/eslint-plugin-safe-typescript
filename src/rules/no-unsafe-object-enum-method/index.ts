@@ -87,9 +87,7 @@ function isObjectEnumMethod(value: unknown): value is ObjectEnumMethod {
   return objectEnumMethods.some(method => method === value);
 }
 
-function matchObjectEnumMethod(
-  node: TSESTree.LeftHandSideExpression
-): ObjectEnumMethod | undefined {
+function matchObjectEnumMethod(node: TSESTree.Expression): ObjectEnumMethod | undefined {
   // We do not consider the following cases:
   // - const m = Object.keys; m(x)
   // - const o = Object; o.keys(x)
