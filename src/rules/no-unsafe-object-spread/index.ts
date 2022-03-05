@@ -1,5 +1,5 @@
-import { TSESTree } from "@typescript-eslint/utils";
-import { createRule } from "../../utils";
+import { AST_NODE_TYPES, TSESTree } from "@typescript-eslint/utils";
+import { createRule } from "../utils";
 
 type Options = [];
 
@@ -23,7 +23,7 @@ export default createRule<Options, MessageIds>({
   create: context => ({
     SpreadElement: node => {
       const parent = node.parent;
-      if (!parent || parent.type !== "ObjectExpression") {
+      if (!parent || parent.type !== AST_NODE_TYPES.ObjectExpression) {
         return;
       }
       // Safe if used at the beginning of the object literal.
@@ -44,11 +44,11 @@ export default createRule<Options, MessageIds>({
 });
 
 function possiblyContainsUnknownProperties(node: TSESTree.Expression): boolean {
-  if (node.type !== "ObjectExpression") {
+  if (node.type !== AST_NODE_TYPES.ObjectExpression) {
     return true;
   }
   return node.properties.some(prop => {
-    if (prop.type === "SpreadElement") {
+    if (prop.type === AST_NODE_TYPES.SpreadElement) {
       return possiblyContainsUnknownProperties(prop.argument);
     } else {
       return false;
