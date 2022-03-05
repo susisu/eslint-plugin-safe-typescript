@@ -26,11 +26,12 @@ export default createRule<Options, MessageIds>({
       if (!parent || parent.type !== "ObjectExpression") {
         return;
       }
-      // It's safe if the spread syntax is used at the beginning of the object literal.
+      // Safe if used at the beginning of the object literal.
       const firstProperty = parent.properties.length > 0 ? parent.properties[0] : undefined;
       if (node === firstProperty) {
         return;
       }
+      // Safe if only contains known properties.
       if (!possiblyContainsUnknownProperties(node.argument)) {
         return;
       }
