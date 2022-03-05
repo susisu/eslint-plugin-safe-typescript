@@ -24,11 +24,15 @@
     "clean:rm": "rimraf lib",
     "prepublishOnly": "run-s clean lint test build"
   },
-  "dependencies": {},
-  "peerDependencies": {},
+  "dependencies": {
+    "@typescript-eslint/utils": "^5.13.0"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/parser": "^5.0.0"
+  },
   "devDependencies": {
     "@susisu/eslint-config": "^0.0.46",
-    "@typescript-eslint/utils": "^5.13.0",
+    "@types/jest": "^27.4.1",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^26.1.1",

@@ -16,6 +16,41 @@ module.exports = {
         es6: true,
         node: true,
       },
+      rules: {
+        "@typescript-eslint/naming-convention": [
+          "warn",
+          {
+            selector: "variableLike",
+            format: ["camelCase", "PascalCase"],
+            leadingUnderscore: "allow",
+            trailingUnderscore: "allow",
+          },
+          {
+            selector: "variable",
+            format: ["camelCase", "PascalCase", "UPPER_CASE"],
+            leadingUnderscore: "allow",
+            trailingUnderscore: "allow",
+          },
+          {
+            selector: "memberLike",
+            format: ["camelCase", "PascalCase"],
+            leadingUnderscore: "allow",
+            trailingUnderscore: "allow",
+          },
+          {
+            selector: ["classProperty", "objectLiteralProperty", "typeProperty"],
+            format: ["camelCase", "PascalCase", "UPPER_CASE"],
+            leadingUnderscore: "allow",
+            trailingUnderscore: "allow",
+          },
+          {
+            selector: "typeLike",
+            format: ["PascalCase"],
+            leadingUnderscore: "allow",
+            trailingUnderscore: "allow",
+          },
+        ],
+      },
     },
     // test files
     {
