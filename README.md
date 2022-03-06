@@ -29,7 +29,7 @@ Set `parser` to `@typescript-eslint/parser`, and add `@susisu/safe-typescript` t
   "parser": "@typescript-eslint/parser",
   "plugins": ["@susisu/safe-typescript"],
   "rules": {
-    "@susisu/safe-typescript/no-unsafe-object-enum-method": "error",
+    "@susisu/safe-typescript/no-unsafe-object-enum-method": "error"
   }
 }
 ```
