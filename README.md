@@ -5,7 +5,7 @@
 ESLint plugin that makes your TypeScript code safer
 
 ## Installation
-This plugin requires `typescript` and `@typescript-eslint/parser` as peer dependencies, so install them if your package doesn't have them installed yet.
+This plugin requires `typescript` and `@typescript-eslint/parser` as peer dependencies, so install them if you don't have them installed yet.
 
 ``` shell
 npm i --save-dev typescript @typescript-eslint/parser
@@ -63,6 +63,10 @@ Note that some rules in the recommended configuration require type information.
 | [`no-unsafe-object-enum-method`](https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/no-unsafe-object-enum-method/README.md) | Disallow possibly unsafe property enumeration methods of `Object`. | ✅ | | 💭 |
 | [`no-unsafe-object-property-check`](https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/no-unsafe-object-property-check/README.md) | Disallow possibly unsafe property checks of object. | ✅ | | 💭 |
 | [`no-unsafe-object-property-overwrite`](https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/no-unsafe-object-property-overwrite/README.md) | Disallow possibly unsafe overwrites of object properties. | ✅ | | |
+
+## Contributing
+Issues and PRs are welcome!
+Feel free to open issues if you have any problems or ideas.
 
 ## License
 
