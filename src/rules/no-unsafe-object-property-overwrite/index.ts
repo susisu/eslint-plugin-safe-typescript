@@ -6,7 +6,7 @@ type Options = [];
 type MessageIds = "noSpreadSyntax" | "noObjectAssign";
 
 export default createRule<Options, MessageIds>({
-  name: "no-unsafe-object-props-overwrite",
+  name: "no-unsafe-object-property-overwrite",
   meta: {
     type: "suggestion",
     docs: {

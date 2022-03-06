@@ -5,7 +5,7 @@ const ruleTester = new ESLintUtils.RuleTester({
   parser: "@typescript-eslint/parser",
 });
 
-ruleTester.run("no-unsafe-object-props-overwrite", rule, {
+ruleTester.run("no-unsafe-object-property-overwrite", rule, {
   valid: [
     // OK at the beginning of the object literal / Object.assign()
     `({ ...x })`,
