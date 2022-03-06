@@ -1,8 +1,8 @@
-# no-unsafe-object-enum-method
+# `no-unsafe-object-enum-method`
 
 Disallow possibly unsafe property enumeration methods of `Object`.
 
-`Object.keys()`, `Object.values()`, and `Object.entries()` enumerates an object's own properties, but it may contain properties that do not appear in the object's type.
+[`Object.keys()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys), [`Object.values()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values), and [`Object.entries()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries) enumerates an object's own properties, but it may contain properties that do not appear in the object's type.
 
 Suppose we have a type `Counts` and a function that reads it.
 
@@ -63,7 +63,6 @@ This rule aims to disallow the possibly unsafe use of `Object.keys()`, `Object.v
 
 ``` ts
 declare const counts: { foo: number; bar: number; baz: number };
-
 Object.keys(counts);
 Object.values(counts);
 Object.entries(counts);
@@ -73,19 +72,16 @@ Object.entries(counts);
 
 ``` ts
 declare const anyValue: any;
-
 Object.keys(anyValue);
 Object.values(anyValue);
 Object.entries(anyValue);
 
 declare const nonPrimitiveValue: object;
-
 Object.keys(nonPrimitiveValue);
 Object.values(nonPrimitiveValue);
 Object.entries(nonPrimitiveValue);
 
 declare const dictionary: { [key: string]: number };
-
 Object.keys(dictionary);
 Object.values(dictionary);
 Object.entries(dictionary);
@@ -109,16 +105,18 @@ const countsWithMetadata = {
 const counts: { foo: number; bar: number; baz: number } = countsWithMetadata;
 const dictionary: { [key: string]: number } = counts;
 
-Object.keys(dictionary);
-Object.values(dictionary);
-Object.entries(dictionary);
+// keys contains "metadata" that dictionary["metadata"] !== "number"
+const keys: string[] = Object.keys(dictionary);
+// values contains "xxx"
+const values: number[] = Object.values(dictionary);
+// entries contains ["metadata", "xxx"]
+const entries: [string, number][] = Object.entries(dictionary);
 ```
 
 👎 Examples of incorrect code for the `{ "allowIndexSignatures": false }` option:
 
 ``` ts
 declare const dictionary: { [key: string]: number };
-
 Object.keys(dictionary);
 Object.values(dictionary);
 Object.entries(dictionary);

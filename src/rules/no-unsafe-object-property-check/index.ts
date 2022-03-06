@@ -16,7 +16,7 @@ export default createRule<Options, MessageIds>({
     },
     messages: {
       noInOperator:
-        "Narrowing types using `in` operator is possibly unsafe. Consider using discriminated unions.",
+        "Type narrowing using the `in` operator is possibly unsafe. Consider using discriminated unions.",
     },
     schema: [],
   },
