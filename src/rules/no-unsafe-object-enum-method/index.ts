@@ -67,13 +67,13 @@ export default createRule<Options, MessageIds>({
             return;
           }
           const tsArg = services.esTreeNodeToTSNodeMap.get(arg);
-          const type = checker.getTypeAtLocation(tsArg);
+          const tsArgType = checker.getTypeAtLocation(tsArg);
           // The enumeration methods work propertly for the any and non-primitive types.
-          if (isAnyType(type) || isNonPrimitiveType(type)) {
+          if (isAnyType(tsArgType) || isNonPrimitiveType(tsArgType)) {
             return;
           }
           // Mostly safe if the argument has an index signature.
-          if (options.allowIndexSignatures && hasIndexSignature(checker, type)) {
+          if (options.allowIndexSignatures && hasIndexSignature(checker, tsArgType)) {
             return;
           }
         }

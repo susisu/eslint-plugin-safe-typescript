@@ -1,6 +1,6 @@
 import { ESLintUtils } from "@typescript-eslint/utils";
-import rule from ".";
 import { code, getFixturesDir } from "../__tests__/utils";
+import rule from ".";
 
 const ruleTester = new ESLintUtils.RuleTester({
   parserOptions: {
