@@ -3,12 +3,11 @@ import { code, getFixturesDir } from "../__tests__/utils";
 import rule from ".";
 
 const ruleTester = new ESLintUtils.RuleTester({
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaVersion: 2018,
     tsconfigRootDir: getFixturesDir(),
     project: "./tsconfig.json",
   },
-  parser: "@typescript-eslint/parser",
 });
 
 ruleTester.run("no-unsafe-object-enum-method", rule, {
