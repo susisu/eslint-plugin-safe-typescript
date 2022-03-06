@@ -126,4 +126,3 @@ Object.entries(dictionary);
 If you don't care about this kind of type safety, disable this rule.
 
 If it is ensured that the argument object does not contain unknown properties i.e. all the properties appear in its type, you can safely disable this rule for that specific case.
-

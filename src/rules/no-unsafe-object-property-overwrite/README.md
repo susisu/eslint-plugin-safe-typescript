@@ -83,3 +83,5 @@ f(0, 1, ...x);
 
 ## When Not To Use It
 If you don't care about this kind of type safety, disable this rule.
+
+If it is ensured that the object does not contain unknown properties i.e. all the properties appear in its type, you can safely disable this rule for that specific case.
