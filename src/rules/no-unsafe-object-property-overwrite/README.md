@@ -63,7 +63,7 @@ This rule aims to disallow the possibly unsafe use of the object spread syntax a
 
 Object.assign({ a: 0 }, x, { b: 1 });
 Object.assign({ a: 0, b: 1 }, x);
-Object.assign({ a: 0, b: 1 }, { ...x, c: 1, d: 2 })
+Object.assign({ a: 0, b: 1 }, { ...x, c: 1, d: 2 });
 ```
 
 👍 Examples of correct code for this rule:
