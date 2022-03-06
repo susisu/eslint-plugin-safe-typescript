@@ -32,6 +32,16 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
       ],
     },
     {
+      code: `Object.assign({ a: 0 }, x, { b: 1 })`,
+      errors: [
+        {
+          messageId: "noObjectAssign",
+          line: 1,
+          column: 25,
+        },
+      ],
+    },
+    {
       code: `({ a: 0, b: 1, ...x })`,
       errors: [
         {
