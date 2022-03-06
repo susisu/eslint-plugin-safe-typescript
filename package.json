@@ -28,13 +28,14 @@
     "@typescript-eslint/utils": "^5.13.0"
   },
   "peerDependencies": {
-    "@typescript-eslint/parser": "^5.0.0",
+    "@typescript-eslint/parser": ">=5.0.0",
     "typescript": "*"
   },
   "devDependencies": {
     "@susisu/eslint-config": "^0.0.46",
     "@types/common-tags": "^1.8.1",
     "@types/jest": "^27.4.1",
+    "@typescript-eslint/parser": "^5.13.0",
     "common-tags": "^1.8.2",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
