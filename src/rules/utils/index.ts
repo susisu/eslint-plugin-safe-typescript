@@ -4,7 +4,7 @@ import ts from "typescript";
 // eslint-disable-next-line new-cap
 export const createRule = ESLintUtils.RuleCreator(
   ruleName =>
-    `https://github.com/susisu/eslint-plugin-safe-typescript/src/rules/${ruleName}/README.md`
+    `https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/${ruleName}/README.md`
 );
 
 /**
