@@ -21,7 +21,7 @@ export default createRule<Options, MessageIds>({
     type: "suggestion",
     docs: {
       description: "Disallow possibly unsafe property enumeration methods of Object",
-      recommended: "warn",
+      recommended: "error",
       requiresTypeChecking: true,
     },
     messages: {

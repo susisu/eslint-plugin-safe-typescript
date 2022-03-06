@@ -11,7 +11,7 @@ export default createRule<Options, MessageIds>({
     type: "suggestion",
     docs: {
       description: "Disallow possibly unsafe overwrites of object properties",
-      recommended: "warn",
+      recommended: "error",
     },
     messages: {
       noSpreadSyntax:

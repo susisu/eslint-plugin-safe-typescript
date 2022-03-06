@@ -11,7 +11,7 @@ export default createRule<Options, MessageIds>({
     type: "suggestion",
     docs: {
       description: "Disallow possibly unsafe property checks of object",
-      recommended: "warn",
+      recommended: "error",
       requiresTypeChecking: true,
     },
     messages: {
