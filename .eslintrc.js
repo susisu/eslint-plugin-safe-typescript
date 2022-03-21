@@ -33,15 +33,30 @@ module.exports = {
           },
           {
             selector: "memberLike",
-            format: ["camelCase", "PascalCase"],
+            format: ["camelCase"],
             leadingUnderscore: "allow",
             trailingUnderscore: "allow",
           },
           {
-            selector: ["classProperty", "objectLiteralProperty", "typeProperty"],
+            selector: [
+              "objectLiteralProperty",
+              "typeProperty",
+              "objectLiteralMethod",
+              "typeMethod",
+            ],
             format: ["camelCase", "PascalCase", "UPPER_CASE"],
             leadingUnderscore: "allow",
             trailingUnderscore: "allow",
+          },
+          {
+            selector: [
+              "objectLiteralProperty",
+              "typeProperty",
+              "objectLiteralMethod",
+              "typeMethod",
+            ],
+            modifiers: ["requiresQuotes"],
+            format: null,
           },
           {
             selector: "typeLike",
