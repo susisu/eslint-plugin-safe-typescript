@@ -1,8 +1,9 @@
-import { AST_NODE_TYPES, ESLintUtils, TSESTree } from "@typescript-eslint/utils";
+import { AST_NODE_TYPES, ESLintUtils } from "@typescript-eslint/utils";
 import {
   createRule,
   hasOnlyIndexSignatures,
   isAnyType,
+  matchObjectMethodCall,
   possiblyContainsUnknownProperties,
 } from "../utils";
 
@@ -78,7 +79,8 @@ export default createRule<Options, MessageIds>({
         }
       },
       CallExpression: node => {
-        if (!testObjectAssign(node.callee)) {
+        const method = matchObjectMethodCall(node);
+        if (method !== "assign") {
           return;
         }
         // Start from 1 because it's safe if the first argument possibly contains unknown properties.
@@ -105,27 +107,3 @@ export default createRule<Options, MessageIds>({
     };
   },
 });
-
-function testObjectAssign(node: TSESTree.Expression): boolean {
-  // We do not consider the following cases:
-  // - const m = Object.assign; m(x)
-  // - const o = Object; o.assign(x)
-  // - const k = "assign"; Object[k](x)
-  if (node.type !== AST_NODE_TYPES.MemberExpression) {
-    return false;
-  }
-  const { object, property } = node;
-  if (object.type !== AST_NODE_TYPES.Identifier || object.name !== "Object") {
-    return false;
-  }
-  if (property.type === AST_NODE_TYPES.Identifier) {
-    if (node.computed) {
-      return false;
-    }
-    return property.name === "assign";
-  } else if (property.type === AST_NODE_TYPES.Literal) {
-    return property.value === "assign";
-  } else {
-    return false;
-  }
-}

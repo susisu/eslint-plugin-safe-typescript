@@ -1,9 +1,10 @@
-import { AST_NODE_TYPES, ESLintUtils, TSESTree } from "@typescript-eslint/utils";
+import { AST_NODE_TYPES, ESLintUtils } from "@typescript-eslint/utils";
 import {
   createRule,
   hasIndexSignatures,
   isAnyType,
   isNonPrimitiveType,
+  matchObjectMethodCall,
   possiblyContainsUnknownProperties,
 } from "../utils";
 
@@ -50,8 +51,8 @@ export default createRule<Options, MessageIds>({
     const checker = services.program.getTypeChecker();
     return {
       CallExpression: node => {
-        const method = matchObjectEnumMethod(node.callee);
-        if (!method) {
+        const method = matchObjectMethodCall(node);
+        if (!isObjectEnumMethod(method)) {
           return;
         }
         const arg = node.arguments.length > 0 ? node.arguments[0] : undefined;
@@ -92,30 +93,4 @@ type ObjectEnumMethod = typeof objectEnumMethods[number];
 
 function isObjectEnumMethod(value: unknown): value is ObjectEnumMethod {
   return objectEnumMethods.some(method => method === value);
-}
-
-function matchObjectEnumMethod(node: TSESTree.Expression): ObjectEnumMethod | undefined {
-  // We do not consider the following cases:
-  // - const m = Object.keys; m(x)
-  // - const o = Object; o.keys(x)
-  // - const k = "keys"; Object[k](x)
-  if (node.type !== AST_NODE_TYPES.MemberExpression) {
-    return undefined;
-  }
-  const { object, property } = node;
-  if (object.type !== AST_NODE_TYPES.Identifier || object.name !== "Object") {
-    return undefined;
-  }
-  if (property.type === AST_NODE_TYPES.Identifier) {
-    if (node.computed) {
-      return undefined;
-    }
-    const method = property.name;
-    return isObjectEnumMethod(method) ? method : undefined;
-  } else if (property.type === AST_NODE_TYPES.Literal) {
-    const method = property.value;
-    return isObjectEnumMethod(method) ? method : undefined;
-  } else {
-    return undefined;
-  }
 }

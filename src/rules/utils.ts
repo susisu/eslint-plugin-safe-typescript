@@ -24,6 +24,39 @@ export function possiblyContainsUnknownProperties(node: TSESTree.Expression): bo
 }
 
 /**
+ * Matches Object method call and returns the method's name.
+ */
+export function matchObjectMethodCall(node: TSESTree.CallExpression): string | undefined {
+  const { callee } = node;
+  // We do not consider the following cases:
+  // - const m = Object.keys; m(x)
+  // - const o = Object; o.keys(x)
+  // - const k = "keys"; Object[k](x)
+  if (callee.type !== AST_NODE_TYPES.MemberExpression) {
+    return undefined;
+  }
+  const { object, property } = callee;
+  if (object.type !== AST_NODE_TYPES.Identifier || object.name !== "Object") {
+    return undefined;
+  }
+  if (property.type === AST_NODE_TYPES.Identifier) {
+    if (callee.computed) {
+      return undefined;
+    }
+    const method = property.name;
+    return method;
+  } else if (property.type === AST_NODE_TYPES.Literal) {
+    const method = property.value;
+    if (typeof method !== "string") {
+      return undefined;
+    }
+    return method;
+  } else {
+    return undefined;
+  }
+}
+
+/**
  * Checks if the type is the any type.
  */
 export function isAnyType(type: ts.Type): boolean {
