@@ -52,11 +52,13 @@ function withMetadata(data: Data, metadata: string): DataWithMetadata {
 ```
 
 ## Rule Details
-This rule aims to disallow the possibly unsafe use of the object spread syntax and `Object.assign()`.
+This rule aims to disallow the possibly unsafe use of object spreads and `Object.assign()`.
 
 👎 Examples of incorrect code for this rule:
 
 ``` ts
+declare const x: { foo: number; bar: number };
+
 ({ a: 0, ...x, b: 1 });
 ({ a: 0, b: 1, ...x });
 ({ a: 0, b: 1, ...{ ...x, c: 1, d: 2 } });
@@ -69,6 +71,8 @@ Object.assign({ a: 0, b: 1 }, { ...x, c: 1, d: 2 });
 👍 Examples of correct code for this rule:
 
 ``` ts
+declare const x: { foo: number; bar: number };
+
 ({ ...x });
 ({ ...x, a: 0, b: 1 });
 ({ a: 0, b: 1, ...{ c: 2, d: 3, ...{ e: 4, f: 5 } } });
@@ -77,8 +81,51 @@ Object.assign(x);
 Object.assign(x, { a: 0, b: 1 });
 Object.assign({ a: 0, b: 1 }, { c: 2, d: 3, ...{ e: 4, f: 5 } });
 
-[0, 1, ...x];
-f(0, 1, ...x);
+declare const countsA: { [key: string]: number };
+declare const countsB: { [key: string]: number };
+
+({ ...x, ...y });
+
+declare const anyValue: any;
+
+({ a: 0, b: 1, ...anyValue });
+Object.assign({ a: 0, b: 1 }, anyValue);
+```
+
+## Options
+### `allowIndexSignatures`
+default = `true`
+
+When set to `true`, allows object spreads in any position if the object's type has only [index signatures](https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures) like `{ [key: string]: number }`.
+
+If the type has index signatures, object spreads are safe in most cases.
+However, there are still some cases where it becomes unsafe.
+For example:
+
+``` ts
+const countsA: { [key: string]: number } = {
+  foo: 1,
+  bar: 2,
+};
+
+const x = {
+  baz: 3,
+  metadata: "xxx",
+};
+const y: { baz: number } = x;
+const countsB: { [key: string]: number } = y;
+
+// counts["metadata"] = "xxx" but its type is number
+const counts: { [key: string]: number } = { ...countsA, ...countsB };
+```
+
+👎 Examples of incorrect code for the `{ "allowIndexSignatures": false }` option:
+
+``` ts
+declare const countsA: { [key: string]: number };
+declare const countsB: { [key: string]: number };
+
+({ ...x, ...y });
 ```
 
 ## When Not To Use It

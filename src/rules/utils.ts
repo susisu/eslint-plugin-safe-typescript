@@ -38,8 +38,15 @@ export function isNonPrimitiveType(type: ts.Type): boolean {
 }
 
 /**
- * Checks if the type has an index signature.
+ * Checks if the type has index signatures.
  */
-export function hasIndexSignature(checker: ts.TypeChecker, type: ts.Type): boolean {
+export function hasIndexSignatures(checker: ts.TypeChecker, type: ts.Type): boolean {
   return checker.getIndexInfosOfType(type).length > 0;
+}
+
+/**
+ * Checks if the type has only index signatures.
+ */
+export function hasOnlyIndexSignatures(checker: ts.TypeChecker, type: ts.Type): boolean {
+  return hasIndexSignatures(checker, type) && checker.getPropertiesOfType(type).length === 0;
 }

@@ -1,5 +1,5 @@
 import { ESLintUtils } from "@typescript-eslint/utils";
-import { createRule, hasIndexSignature, isAnyType, isNonPrimitiveType } from "../utils";
+import { createRule, hasIndexSignatures, isAnyType, isNonPrimitiveType } from "../utils";
 
 type Options = [];
 
@@ -35,8 +35,8 @@ export default createRule<Options, MessageIds>({
         if (isAnyType(tsRightType) || isNonPrimitiveType(tsRightType)) {
           return;
         }
-        // Safe if the argument has an index signature.
-        if (hasIndexSignature(checker, tsRightType)) {
+        // Safe if the argument has index signatures.
+        if (hasIndexSignatures(checker, tsRightType)) {
           return;
         }
         context.report({

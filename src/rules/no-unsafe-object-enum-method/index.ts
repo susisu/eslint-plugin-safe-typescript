@@ -1,7 +1,7 @@
 import { AST_NODE_TYPES, ESLintUtils, TSESTree } from "@typescript-eslint/utils";
 import {
   createRule,
-  hasIndexSignature,
+  hasIndexSignatures,
   isAnyType,
   isNonPrimitiveType,
   possiblyContainsUnknownProperties,
@@ -72,8 +72,8 @@ export default createRule<Options, MessageIds>({
           if (isAnyType(tsArgType) || isNonPrimitiveType(tsArgType)) {
             return;
           }
-          // Mostly safe if the argument has an index signature.
-          if (options.allowIndexSignatures && hasIndexSignature(checker, tsArgType)) {
+          // Mostly safe if the argument has index signatures.
+          if (options.allowIndexSignatures && hasIndexSignatures(checker, tsArgType)) {
             return;
           }
         }
