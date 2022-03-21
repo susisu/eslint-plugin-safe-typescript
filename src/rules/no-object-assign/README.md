@@ -1,4 +1,4 @@
-# `no-unsafe-object-property-check`
+# `no-object-assign`
 
 Disallow the use of `Object.assign()`.
 
