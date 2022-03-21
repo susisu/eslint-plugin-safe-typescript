@@ -29,7 +29,7 @@ Set `parser` to `@typescript-eslint/parser`, and add `@susisu/safe-typescript` t
   "parser": "@typescript-eslint/parser",
   "plugins": ["@susisu/safe-typescript"],
   "rules": {
-    "@susisu/safe-typescript/no-unsafe-object-enum-method": "error"
+    "@susisu/safe-typescript/no-object-assign": "error"
   }
 }
 ```
@@ -53,7 +53,7 @@ Add `plugin:@susisu/safe-typescript/recommended` to `extends` to use the recomme
 }
 ```
 
-Note that some rules in the recommended configuration require type information.
+Note that rules in the recommended configuration require type information.
 
 ## Rules
 ✅ = recommended, 🔧 = fixable, 💭 = requires type information
