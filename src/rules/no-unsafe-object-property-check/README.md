@@ -52,7 +52,6 @@ function myFunc(data: Data): void {
 ```
 
 ## Rule Details
-This rule aims to disallow the possibly unsafe use of the `in` operator.
 
 👎 Examples of incorrect code for this rule:
 
@@ -75,4 +74,5 @@ declare const dictionary: { [key: string]: number };
 ```
 
 ## When Not To Use It
+
 If you don't care about this kind of type safety, disable this rule.

@@ -52,7 +52,6 @@ function withMetadata(data: Data, metadata: string): DataWithMetadata {
 ```
 
 ## Rule Details
-This rule aims to disallow the possibly unsafe use of object spreads and `Object.assign()`.
 
 👎 Examples of incorrect code for this rule:
 
@@ -94,6 +93,7 @@ Object.assign({ a: 0, b: 1 }, anyValue);
 
 ## Options
 ### `allowIndexSignatures`
+
 default = `true`
 
 When set to `true`, allows object spreads in any position if the object's type has only [index signatures](https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures) like `{ [key: string]: number }`.
@@ -129,6 +129,7 @@ declare const countsB: { [key: string]: number };
 ```
 
 ## When Not To Use It
+
 If you don't care about this kind of type safety, disable this rule.
 
 If it is ensured that the object does not contain unknown properties i.e. all the properties appear in its type, you can safely disable this rule for that specific case.

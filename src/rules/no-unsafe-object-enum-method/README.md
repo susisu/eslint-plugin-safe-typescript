@@ -57,7 +57,6 @@ function myFunc(counts: Counts): void {
 ```
 
 ## Rule Details
-This rule aims to disallow the possibly unsafe use of `Object.keys()`, `Object.values()`, and `Object.entries()`.
 
 👎 Examples of incorrect code for this rule:
 
@@ -89,6 +88,7 @@ Object.entries(dictionary);
 
 ## Options
 ### `allowIndexSignatures`
+
 default = `true`
 
 When set to `true`, allows `Object.keys()`, `Object.values()`, and `Object.entries()` if the object's type has [index signatures](https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures) like `{ [key: string]: number }`.
@@ -125,6 +125,7 @@ Object.entries(dictionary);
 ```
 
 ## When Not To Use It
+
 If you don't care about this kind of type safety, disable this rule.
 
 If it is ensured that the argument object does not contain unknown properties i.e. all the properties appear in its type, you can safely disable this rule for that specific case.
