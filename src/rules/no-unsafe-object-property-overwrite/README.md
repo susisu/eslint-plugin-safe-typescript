@@ -80,15 +80,15 @@ Object.assign(x);
 Object.assign(x, { a: 0, b: 1 });
 Object.assign({ a: 0, b: 1 }, { c: 2, d: 3, ...{ e: 4, f: 5 } });
 
-declare const countsA: { [key: string]: number };
-declare const countsB: { [key: string]: number };
-
-({ ...x, ...y });
-
 declare const anyValue: any;
 
 ({ a: 0, b: 1, ...anyValue });
 Object.assign({ a: 0, b: 1 }, anyValue);
+
+declare const countsA: { [key: string]: number };
+declare const countsB: { [key: string]: number };
+
+({ ...countsA, ...countsB });
 ```
 
 ## Options
@@ -125,7 +125,7 @@ const counts: { [key: string]: number } = { ...countsA, ...countsB };
 declare const countsA: { [key: string]: number };
 declare const countsB: { [key: string]: number };
 
-({ ...x, ...y });
+({ ...countsA, ...countsB });
 ```
 
 ## When Not To Use It
