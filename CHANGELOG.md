@@ -1,3 +1,6 @@
+## 0.2.2 (2022-05-06)
+- Upgrade dependencies
+
 ## 0.2.1 (2022-03-21)
 - Fix `no-object-assign` was not exported
 
