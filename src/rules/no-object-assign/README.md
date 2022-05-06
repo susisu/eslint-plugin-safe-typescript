@@ -12,7 +12,7 @@ For the first case, [the object spread syntax](https://developer.mozilla.org/en-
 For the second case, it is possibly unsafe because `Object.assign()` mutates the object without knowing its type.
 For example, it may mutate properties that are marked as `readonly`, or internal properties that should not be exposed.
 
-## Rule Details
+## Examples
 
 👎 Examples of incorrect code for this rule:
 

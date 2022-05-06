@@ -56,7 +56,7 @@ function myFunc(counts: Counts): void {
 }
 ```
 
-## Rule Details
+## Examples
 
 👎 Examples of incorrect code for this rule:
 

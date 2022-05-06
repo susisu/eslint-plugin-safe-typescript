@@ -51,7 +51,7 @@ function myFunc(data: Data): void {
 }
 ```
 
-## Rule Details
+## Examples
 
 👎 Examples of incorrect code for this rule:
 

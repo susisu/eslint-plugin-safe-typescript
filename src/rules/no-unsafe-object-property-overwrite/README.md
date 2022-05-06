@@ -51,7 +51,7 @@ function withMetadata(data: Data, metadata: string): DataWithMetadata {
 }
 ```
 
-## Rule Details
+## Examples
 
 👎 Examples of incorrect code for this rule:
 
