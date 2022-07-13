@@ -1,3 +1,7 @@
+## 0.3.0 (2022-07-13)
+- Add `no-type-assertion` rule
+- **BREAKING** Add `no-type-assertion` rule to the recommended config
+
 ## 0.2.2 (2022-05-06)
 - Upgrade dependencies
 
