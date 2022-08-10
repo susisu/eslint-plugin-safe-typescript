@@ -6,7 +6,7 @@ module.exports = {
     // source files
     {
       files: ["*.ts"],
-      extends: ["@susisu/eslint-config/preset/ts", "prettier"],
+      extends: ["@susisu/eslint-config/preset/ts", "plugin:eslint-plugin/recommended", "prettier"],
       parserOptions: {
         ecmaVersion: 2020,
         sourceType: "module",
