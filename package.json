@@ -13,19 +13,128 @@
     "!src/**/__tests__"
   ],
   "scripts": {
-    "lint": "run-s lint:eslint lint:prettier",
-    "lint-fix": "run-s lint-fix:eslint lint-fix:prettier",
-    "lint:eslint": "eslint '*.js' src",
-    "lint-fix:eslint": "eslint --fix '*.js' src",
-    "lint:prettier": "prettier --check '*.js' src",
-    "lint-fix:prettier": "prettier --write '*.js' src",
-    "test": "jest",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "build": "tsc --build tsconfig.build.json",
-    "clean": "run-s clean:build clean:rm",
-    "clean:build": "tsc --build tsconfig.build.json --clean",
-    "clean:rm": "rimraf lib",
-    "prepublishOnly": "run-s clean lint test build"
+    "lint": "wireit",
+    "lint-fix": "wireit",
+    "lint:eslint": "wireit",
+    "lint-fix:eslint": "wireit",
+    "lint:prettier": "wireit",
+    "lint-fix:prettier": "wireit",
+    "test": "wireit",
+    "typecheck": "wireit",
+    "build": "wireit",
+    "prepublishOnly": "wireit"
+  },
+  "wireit": {
+    "lint": {
+      "dependencies": ["lint:eslint", "lint:prettier"]
+    },
+    "lint-fix": {
+      "dependencies": ["lint-fix:eslint", "lint-fix:prettier"]
+    },
+    "lint:eslint": {
+      "command": "eslint --color --cache '*.js' src",
+      "files": [
+        ".eslintrc.js",
+        ".eslintignore",
+        "tsconfig.json",
+        "*.js",
+        "src/**/*.{ts,tsx}"
+      ],
+      "output": [],
+      "packageLocks": [
+        "yarn.lock"
+      ]
+    },
+    "lint-fix:eslint": {
+      "command": "eslint --color --cache --fix '*.js' src",
+      "files": [
+        ".eslintrc.js",
+        ".eslintignore",
+        "tsconfig.json",
+        "*.js",
+        "src/**/*.{ts,tsx}"
+      ],
+      "output": [],
+      "packageLocks": [
+        "yarn.lock"
+      ]
+    },
+    "lint:prettier": {
+      "dependencies": ["lint:eslint"],
+      "command": "prettier --check '*.js' src",
+      "files": [
+        ".prettierrc.js",
+        ".prettierignore",
+        "*.js",
+        "src/**/*.{ts,tsx}"
+      ],
+      "output": [],
+      "packageLocks": [
+        "yarn.lock"
+      ]
+    },
+    "lint-fix:prettier": {
+      "dependencies": ["lint-fix:eslint"],
+      "command": "prettier --write '*.js' src",
+      "files": [
+        ".prettierrc.js",
+        ".prettierignore",
+        "*.js",
+        "src/**/*.{ts,tsx}"
+      ],
+      "output": [],
+      "packageLocks": [
+        "yarn.lock"
+      ]
+    },
+    "test": {
+      "command": "jest --color",
+      "files": [
+        "tsconfig.json",
+        "tsconfig.test.json",
+        "src/**/*.{ts,tsx}"
+      ],
+      "output": [
+        "coverage/**/*"
+      ],
+      "packageLocks": [
+        "yarn.lock"
+      ]
+    },
+    "typecheck": {
+      "command": "tsc -p tsconfig.json --noEmit --pretty",
+      "clean": "if-file-deleted",
+      "files": [
+        "tsconfig.json",
+        "tsconfig.test.json",
+        "src/**/*.{ts,tsx}"
+      ],
+      "output": [],
+      "packageLocks": [
+        "yarn.lock"
+      ]
+    },
+    "build": {
+      "command": "tsc --build tsconfig.build.json --pretty",
+      "clean": "if-file-deleted",
+      "files": [
+        "tsconfig.json",
+        "tsconfig.build.json",
+        "src/**/*.{ts,tsx}",
+        "!src/**/*.{test,spec}.{ts,tsx}",
+        "!src/**/__tests__"
+      ],
+      "output": [
+        "lib/**/*",
+        "tsconfig.build.tsbuildinfo"
+      ],
+      "packageLocks": [
+        "yarn.lock"
+      ]
+    },
+    "prepublishOnly": {
+      "dependencies": ["lint", "test", "build"]
+    }
   },
   "dependencies": {
     "@typescript-eslint/utils": "^5.33.0"
