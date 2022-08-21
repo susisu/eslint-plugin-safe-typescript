@@ -113,7 +113,6 @@
     },
     "typecheck": {
       "command": "tsc -p tsconfig.json --noEmit --pretty",
-      "clean": "if-file-deleted",
       "files": [
         "tsconfig.json",
         "tsconfig.test.json",
