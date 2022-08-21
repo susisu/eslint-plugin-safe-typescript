@@ -26,10 +26,16 @@
   },
   "wireit": {
     "lint": {
-      "dependencies": ["lint:eslint", "lint:prettier"]
+      "dependencies": [
+        "lint:eslint",
+        "lint:prettier"
+      ]
     },
     "lint-fix": {
-      "dependencies": ["lint-fix:eslint", "lint-fix:prettier"]
+      "dependencies": [
+        "lint-fix:eslint",
+        "lint-fix:prettier"
+      ]
     },
     "lint:eslint": {
       "command": "eslint --color --cache '*.js' src",
@@ -60,7 +66,9 @@
       ]
     },
     "lint:prettier": {
-      "dependencies": ["lint:eslint"],
+      "dependencies": [
+        "lint:eslint"
+      ],
       "command": "prettier --check '*.js' src",
       "files": [
         ".prettierrc.js",
@@ -74,7 +82,9 @@
       ]
     },
     "lint-fix:prettier": {
-      "dependencies": ["lint-fix:eslint"],
+      "dependencies": [
+        "lint-fix:eslint"
+      ],
       "command": "prettier --write '*.js' src",
       "files": [
         ".prettierrc.js",
@@ -133,7 +143,11 @@
       ]
     },
     "prepublishOnly": {
-      "dependencies": ["lint", "test", "build"]
+      "dependencies": [
+        "lint",
+        "test",
+        "build"
+      ]
     }
   },
   "dependencies": {
