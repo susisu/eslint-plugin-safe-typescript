@@ -1,3 +1,6 @@
+## 0.3.2 (2022-09-02)
+- Upgrade dependencies
+
 ## 0.3.1 (2022-08-11)
 - Upgrade dependencies
 
