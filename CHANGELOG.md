@@ -1,3 +1,7 @@
+## 0.3.2 (2022-10-02)
+- Upgrade dependencies
+- Update message of `no-type-assertion`
+
 ## 0.3.2 (2022-09-02)
 - Upgrade dependencies
 
