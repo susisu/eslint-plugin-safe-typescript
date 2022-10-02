@@ -13,7 +13,7 @@ export default createRule<Options, MessageIds>({
       recommended: "error",
     },
     messages: {
-      noTypeAssertion: "A type assertion possibly involves unsafe downcasting.",
+      noTypeAssertion: "A type assertion `x as T` possibly involves unsafe downcasting.",
     },
     schema: [],
   },
