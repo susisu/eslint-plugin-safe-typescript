@@ -1,3 +1,6 @@
+## 0.3.4 (2022-12-04)
+- Upgrade TypeScript to 4.9
+
 ## 0.3.3 (2022-10-02)
 - Upgrade dependencies
 - Update message of `no-type-assertion`
