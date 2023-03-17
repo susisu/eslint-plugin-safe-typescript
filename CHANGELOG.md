@@ -1,3 +1,7 @@
+## 0.3.5 (2023-03-17)
+- Upgrade dependencies
+  - Upgrade TypeScript to 5.0
+
 ## 0.3.4 (2022-12-04)
 - Upgrade TypeScript to 4.9
 
