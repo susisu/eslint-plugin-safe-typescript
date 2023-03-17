@@ -89,7 +89,7 @@ export default createRule<Options, MessageIds>({
 });
 
 const objectEnumMethods = ["keys", "values", "entries"] as const;
-type ObjectEnumMethod = typeof objectEnumMethods[number];
+type ObjectEnumMethod = (typeof objectEnumMethods)[number];
 
 function isObjectEnumMethod(value: unknown): value is ObjectEnumMethod {
   return objectEnumMethods.some(method => method === value);
