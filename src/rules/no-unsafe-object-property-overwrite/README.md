@@ -2,7 +2,7 @@
 
 Disallow possibly unsafe overwrites of object properties.
 
-[The object spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) and [`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) enumerates and copies an object's own properties, but it may contain properties that do not appear in the object's type.
+[The object spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) enumerates and copies an object's own properties, but it may contain properties that do not appear in the object's type.
 
 For example, suppose we have a type `Data`, and `DataWithMetadata` that extends `Data`.
 
@@ -25,7 +25,8 @@ const dataA = { foo: 0, bar: 1 };
 const metaA: string = withMetadata(dataA, "xxx").metadata;
 ```
 
-This seems pretty good, however, the definition of `withMetadata()` is actually unsafe, because it allows overwriting `metadata` with the properties of `data`.
+This seems pretty good.
+However, the definition of `withMetadata()` is actually unsafe, because it allows overwriting `metadata` with the properties of `data`.
 
 ``` ts
 const dataB = { foo: 0, bar: 1, metadata: 666 };
@@ -42,7 +43,7 @@ function withMetadata(data: Data, metadata: string): DataWithMetadata {
 }
 ```
 
-The same applies to `Object.assign()`.
+The same applies to [`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
 
 ``` ts
 function withMetadata(data: Data, metadata: string): DataWithMetadata {
@@ -98,8 +99,7 @@ default = `true`
 
 When set to `true`, allows object spreads in any position if the object's type has only [index signatures](https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures) like `{ [key: string]: number }`.
 
-If the type has index signatures, object spreads are safe in most cases.
-However, there are still some cases where it becomes unsafe.
+If the type has index signatures, object spreads are safe in most cases, while there are still some cases where it becomes unsafe.
 For example:
 
 ``` ts

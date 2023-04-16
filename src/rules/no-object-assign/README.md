@@ -2,7 +2,7 @@
 
 Disallow the use of `Object.assign()`.
 
-The possible usage of the [`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method one of the following cases:
+The possible usage of the [`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method will be one of the following cases:
 
 1. To copy an object.
 2. To mutate an object by assigning properties.
