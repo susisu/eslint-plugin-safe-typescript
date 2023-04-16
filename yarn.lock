@@ -635,16 +635,16 @@
   dependencies:
     "@sinonjs/commons" "^2.0.0"
 
-"@susisu/eslint-config@^0.0.62":
-  version "0.0.62"
-  resolved "https://registry.yarnpkg.com/@susisu/eslint-config/-/eslint-config-0.0.62.tgz#b68f0f61d507f62c971f7c5845c407f67d2a51c2"
-  integrity sha512-itCf3GFvS43nsRtsSaFXcVO/3OzRSMcmzt5man4R90p8Ml67cEq2tHCsOzqs8VvfKSO/G85FztB2+0lxbRh+eA==
+"@susisu/eslint-config@^0.0.63":
+  version "0.0.63"
+  resolved "https://registry.yarnpkg.com/@susisu/eslint-config/-/eslint-config-0.0.63.tgz#566c968560dc8267db9581ac40f67744c073798b"
+  integrity sha512-WiNtfavtuhTdaNhtSjKcs3KmKlYfGkFs8lYbc/skACBNgZIRNr5Prz52KQywnIw1nxHZ/gF2jzGOqXmsPKtNKw==
   dependencies:
-    "@susisu/eslint-plugin-safe-typescript" "^0.3.4"
-    "@typescript-eslint/eslint-plugin" "^5.55.0"
-    "@typescript-eslint/parser" "^5.55.0"
+    "@susisu/eslint-plugin-safe-typescript" "^0.3.5"
+    "@typescript-eslint/eslint-plugin" "^5.58.0"
+    "@typescript-eslint/parser" "^5.58.0"
 
-"@susisu/eslint-plugin-safe-typescript@^0.3.4":
+"@susisu/eslint-plugin-safe-typescript@^0.3.5":
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/@susisu/eslint-plugin-safe-typescript/-/eslint-plugin-safe-typescript-0.3.5.tgz#943f0d824210da3ca5c11ad4ee6b749a05fef9ac"
   integrity sha512-LSmKCXEJ/tfSg3yOZkSzoV8ktdoqc0rx+8K+HP6EcehZmZubRC4CEL/P+CRbZZzrciTBfkCAiAqCjQQbGmkLTw==
@@ -760,7 +760,7 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@typescript-eslint/eslint-plugin@^5.55.0":
+"@typescript-eslint/eslint-plugin@^5.58.0":
   version "5.58.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.58.0.tgz#b1d4b0ad20243269d020ef9bbb036a40b0849829"
   integrity sha512-vxHvLhH0qgBd3/tW6/VccptSfc8FxPQIkmNTVLWcCOVqSBvqpnKkBTYrhcGlXfSnd78azwe+PsjYFj0X34/njA==
@@ -776,7 +776,7 @@
     semver "^7.3.7"
     tsutils "^3.21.0"
 
-"@typescript-eslint/parser@^5.55.0", "@typescript-eslint/parser@^5.58.0":
+"@typescript-eslint/parser@^5.58.0":
   version "5.58.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.58.0.tgz#2ac4464cf48bef2e3234cb178ede5af352dddbc6"
   integrity sha512-ixaM3gRtlfrKzP8N6lRhBbjTow1t6ztfBvQNGuRM8qH1bjFFXIJ35XY+FC0RRBKn3C6cT+7VW1y8tNm7DwPHDQ==

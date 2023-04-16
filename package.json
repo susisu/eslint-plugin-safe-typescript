@@ -35,7 +35,7 @@
     "typescript": "*"
   },
   "devDependencies": {
-    "@susisu/eslint-config": "^0.0.62",
+    "@susisu/eslint-config": "^0.0.63",
     "@types/common-tags": "^1.8.1",
     "@types/jest": "^29.5.0",
     "@typescript-eslint/parser": "^5.58.0",
