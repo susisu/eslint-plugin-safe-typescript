@@ -1,7 +1,11 @@
+## 0.4.1 (2023-07-16)
+
+- Fix peerDependencies was not updated
+
 ## 0.4.0 (2023-07-16)
 
 - Upgrade typescript to 5.1
-- Upgrade typescript-eslint to 6.0
+- **BREAKING** Upgrade typescript-eslint to 6.0
 - **BREAKING** Type declarations are no longer included in the distribution
 
 ## 0.3.5 (2023-03-17)
