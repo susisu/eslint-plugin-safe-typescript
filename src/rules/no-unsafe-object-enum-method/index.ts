@@ -66,8 +66,7 @@ export default createRule<Options, MessageIds>({
           if (!possiblyContainsUnknownProperties(arg)) {
             return;
           }
-          const tsArg = services.esTreeNodeToTSNodeMap.get(arg);
-          const tsArgType = checker.getTypeAtLocation(tsArg);
+          const tsArgType = services.getTypeAtLocation(arg);
           // The enumeration methods work propertly for the any and non-primitive types.
           if (isAnyType(tsArgType) || isNonPrimitiveType(tsArgType)) {
             return;

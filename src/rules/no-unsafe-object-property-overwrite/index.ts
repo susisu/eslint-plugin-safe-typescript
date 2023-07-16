@@ -51,8 +51,7 @@ export default createRule<Options, MessageIds>({
     const checker = services.program.getTypeChecker();
     return {
       ObjectExpression: node => {
-        const tsNode = services.esTreeNodeToTSNodeMap.get(node);
-        const tsNodeType = checker.getTypeAtLocation(tsNode);
+        const tsNodeType = services.getTypeAtLocation(node);
         // Ignore any.
         if (isAnyType(tsNodeType)) {
           return;
@@ -88,8 +87,7 @@ export default createRule<Options, MessageIds>({
           // Safe if the argument contains only known properties.
           // We do not consider Object.assign(...[{ a: 0, b: 1 }])
           if (arg.type !== AST_NODE_TYPES.SpreadElement) {
-            const tsArg = services.esTreeNodeToTSNodeMap.get(arg);
-            const tsArgType = checker.getTypeAtLocation(tsArg);
+            const tsArgType = services.getTypeAtLocation(arg);
             if (isAnyType(tsArgType)) {
               continue;
             }

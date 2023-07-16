@@ -28,8 +28,7 @@ export default createRule<Options, MessageIds>({
         if (node.operator !== "in") {
           return;
         }
-        const tsRight = services.esTreeNodeToTSNodeMap.get(node.right);
-        const tsRightType = checker.getTypeAtLocation(tsRight);
+        const tsRightType = services.getTypeAtLocation(node.right);
         // The check work propertly for the any and non-primitive types.
         if (isAnyType(tsRightType) || isNonPrimitiveType(tsRightType)) {
           return;
