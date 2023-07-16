@@ -31,7 +31,7 @@
     "@typescript-eslint/utils": "^6.0.0"
   },
   "peerDependencies": {
-    "@typescript-eslint/parser": ">=5.0.0",
+    "@typescript-eslint/parser": ">=6.0.0",
     "typescript": "*"
   },
   "devDependencies": {
