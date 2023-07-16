@@ -39,6 +39,7 @@
     "@types/common-tags": "^1.8.1",
     "@types/jest": "^29.5.3",
     "@typescript-eslint/parser": "^6.0.0",
+    "@typescript-eslint/rule-tester": "^6.0.0",
     "common-tags": "^1.8.2",
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^8.8.0",

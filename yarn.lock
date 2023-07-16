@@ -802,6 +802,17 @@
     "@typescript-eslint/visitor-keys" "6.0.0"
     debug "^4.3.4"
 
+"@typescript-eslint/rule-tester@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/rule-tester/-/rule-tester-6.0.0.tgz#21f9868aa26eb396a652693c3f57d6fc00fbce19"
+  integrity sha512-mHB5phLdzK3Kt7Hf9LzkwF+bgDhfdTi3vggSeyl8/jA6TRk9N7N+td40U1seHEN1Kfp1bM6QJlO8ePTXtCzTmQ==
+  dependencies:
+    "@typescript-eslint/typescript-estree" "6.0.0"
+    "@typescript-eslint/utils" "6.0.0"
+    ajv "^6.10.0"
+    lodash.merge "4.6.2"
+    semver "^7.3.7"
+
 "@typescript-eslint/scope-manager@5.62.0":
   version "5.62.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-5.62.0.tgz#d9457ccc6a0b8d6b37d0eb252a23022478c5460c"
@@ -878,7 +889,7 @@
     eslint-scope "^5.1.1"
     semver "^7.3.7"
 
-"@typescript-eslint/utils@^6.0.0":
+"@typescript-eslint/utils@6.0.0", "@typescript-eslint/utils@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/utils/-/utils-6.0.0.tgz#27a16d0d8f2719274a39417b9782f7daa3802db0"
   integrity sha512-SOr6l4NB6HE4H/ktz0JVVWNXqCJTOo/mHnvIte1ZhBQ0Cvd04x5uKZa3zT6tiodL06zf5xxdK8COiDvPnQ27JQ==
@@ -2571,7 +2582,7 @@ lodash.memoize@4.x:
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==
 
-lodash.merge@^4.6.2:
+lodash.merge@4.6.2, lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==

@@ -1,8 +1,8 @@
-import { ESLintUtils } from "@typescript-eslint/utils";
+import { RuleTester } from "@typescript-eslint/rule-tester";
 import { code, getFixturesDir } from "../__tests__/utils";
 import rule from ".";
 
-const ruleTester = new ESLintUtils.RuleTester({
+const ruleTester = new RuleTester({
   parser: "@typescript-eslint/parser",
   parserOptions: {
     tsconfigRootDir: getFixturesDir(),
