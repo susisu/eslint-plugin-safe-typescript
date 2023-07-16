@@ -11,7 +11,6 @@ export default createRule<Options, MessageIds>({
     type: "suggestion",
     docs: {
       description: "Disallow the use of Object.assign()",
-      recommended: "error",
     },
     messages: {
       noCopying:

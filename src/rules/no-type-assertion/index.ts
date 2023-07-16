@@ -11,7 +11,6 @@ export default createRule<Options, MessageIds>({
     type: "suggestion",
     docs: {
       description: "Disallow type assertions",
-      recommended: "error",
     },
     messages: {
       noTypeAssertion: "A type assertion `x as T` possibly involves unsafe downcasting.",
