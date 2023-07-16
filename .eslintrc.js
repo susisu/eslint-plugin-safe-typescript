@@ -8,7 +8,7 @@ module.exports = {
       files: ["*.ts"],
       extends: ["@susisu/eslint-config/preset/ts", "plugin:eslint-plugin/recommended", "prettier"],
       parserOptions: {
-        ecmaVersion: 2020,
+        ecmaVersion: 2021,
         sourceType: "module",
         project: "./tsconfig.json",
       },
@@ -80,7 +80,7 @@ module.exports = {
       files: ["*.js"],
       extends: ["@susisu/eslint-config/preset/js", "prettier"],
       parserOptions: {
-        ecmaVersion: 2020,
+        ecmaVersion: 2021,
         sourceType: "script",
       },
       env: {
