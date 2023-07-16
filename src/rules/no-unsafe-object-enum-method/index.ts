@@ -11,7 +11,7 @@ import {
 type Options = [
   {
     allowIndexSignatures?: boolean;
-  }
+  },
 ];
 
 type MessageIds = "noEnumMethod";

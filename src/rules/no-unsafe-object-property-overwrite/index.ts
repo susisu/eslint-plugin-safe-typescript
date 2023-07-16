@@ -10,7 +10,7 @@ import {
 type Options = [
   {
     allowIndexSignatures?: boolean;
-  }
+  },
 ];
 
 type MessageIds = "noSpreadSyntax" | "noObjectAssign";
