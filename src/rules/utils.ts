@@ -4,8 +4,8 @@ import ts from "typescript";
 
 // eslint-disable-next-line new-cap
 export const createRule = ESLintUtils.RuleCreator(
-  ruleName =>
-    `https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/${ruleName}/README.md`
+  (ruleName) =>
+    `https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/${ruleName}/README.md`,
 );
 
 /**
@@ -15,7 +15,7 @@ export function possiblyContainsUnknownProperties(node: TSESTree.Expression): bo
   if (node.type !== AST_NODE_TYPES.ObjectExpression) {
     return true;
   }
-  return node.properties.some(prop => {
+  return node.properties.some((prop) => {
     if (prop.type === AST_NODE_TYPES.SpreadElement) {
       return possiblyContainsUnknownProperties(prop.argument);
     } else {

@@ -20,11 +20,11 @@ export default createRule<Options, MessageIds>({
     schema: [],
   },
   defaultOptions: [],
-  create: context => {
+  create: (context) => {
     const services = ESLintUtils.getParserServices(context);
     const checker = services.program.getTypeChecker();
     return {
-      BinaryExpression: node => {
+      BinaryExpression: (node) => {
         if (node.operator !== "in") {
           return;
         }

@@ -20,8 +20,8 @@ export default createRule<Options, MessageIds>({
     schema: [],
   },
   defaultOptions: [],
-  create: context => ({
-    CallExpression: node => {
+  create: (context) => ({
+    CallExpression: (node) => {
       const method = matchObjectMethodCall(node);
       if (method !== "assign") {
         return;

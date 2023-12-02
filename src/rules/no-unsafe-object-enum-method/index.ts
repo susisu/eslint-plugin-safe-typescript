@@ -49,7 +49,7 @@ export default createRule<Options, MessageIds>({
     const services = ESLintUtils.getParserServices(context);
     const checker = services.program.getTypeChecker();
     return {
-      CallExpression: node => {
+      CallExpression: (node) => {
         const method = matchObjectMethodCall(node);
         if (!isObjectEnumMethod(method)) {
           return;
@@ -90,5 +90,5 @@ const objectEnumMethods = ["keys", "values", "entries"] as const;
 type ObjectEnumMethod = (typeof objectEnumMethods)[number];
 
 function isObjectEnumMethod(value: unknown): value is ObjectEnumMethod {
-  return objectEnumMethods.some(method => method === value);
+  return objectEnumMethods.some((method) => method === value);
 }

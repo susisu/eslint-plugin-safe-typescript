@@ -50,7 +50,7 @@ export default createRule<Options, MessageIds>({
     const services = ESLintUtils.getParserServices(context);
     const checker = services.program.getTypeChecker();
     return {
-      ObjectExpression: node => {
+      ObjectExpression: (node) => {
         const tsNodeType = services.getTypeAtLocation(node);
         // Ignore any.
         if (isAnyType(tsNodeType)) {
@@ -76,7 +76,7 @@ export default createRule<Options, MessageIds>({
           });
         }
       },
-      CallExpression: node => {
+      CallExpression: (node) => {
         const method = matchObjectMethodCall(node);
         if (method !== "assign") {
           return;

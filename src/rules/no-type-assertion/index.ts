@@ -18,8 +18,8 @@ export default createRule<Options, MessageIds>({
     schema: [],
   },
   defaultOptions: [],
-  create: context => ({
-    TSAsExpression: node => {
+  create: (context) => ({
+    TSAsExpression: (node) => {
       const annotation = node.typeAnnotation;
       // `as const` is a safe expression
       if (
