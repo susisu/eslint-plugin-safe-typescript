@@ -3,7 +3,6 @@
     "types": ["vitest/globals"],
     "rootDir": "src",
     "outDir": "lib",
-    "incremental": true,
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "bundler",

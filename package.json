@@ -7,6 +7,16 @@
   "license": "MIT",
   "type": "module",
   "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "default": "./lib/index.cjs"
+      }
+    }
+  },
   "files": [
     "lib",
     "src",
@@ -21,11 +31,8 @@
     "test": "vitest run --coverage",
     "test:dev": "vitest dev --coverage.enabled --coverage.reporter=text",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "build": "tsc --build tsconfig.build.json",
-    "clean": "run-s clean:build clean:rm",
-    "clean:build": "tsc --build tsconfig.build.json --clean",
-    "clean:rm": "rimraf lib",
-    "prepublishOnly": "run-s clean format:check lint:check test build"
+    "build": "tsup",
+    "prepublishOnly": "run-s format:check lint:check test build"
   },
   "dependencies": {
     "@typescript-eslint/utils": "^6.13.1"
@@ -50,6 +57,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.1.0",
     "rimraf": "^5.0.5",
+    "tsup": "^8.0.1",
     "typescript": "~5.3.2",
     "vitest": "^0.34.6"
   }
