@@ -1,5 +1,6 @@
 import { RuleTester } from "@typescript-eslint/rule-tester";
-import { code, getFixturesDir } from "../__tests__/utils";
+import { dedent } from "@qnighy/dedent";
+import { getFixturesDir } from "../__tests__/utils";
 import rule from ".";
 
 const ruleTester = new RuleTester({
@@ -13,19 +14,19 @@ const ruleTester = new RuleTester({
 ruleTester.run("no-unsafe-object-property-overwrite", rule, {
   valid: [
     // OK at the beginning of the object literal / Object.assign()
-    code`
+    dedent`\
       declare const x: { foo: number; bar: number };
       ({ ...x });
     `,
-    code`
+    dedent`\
       declare const x: { foo: number; bar: number };
       Object.assign(x);
     `,
-    code`
+    dedent`\
       declare const x: { foo: number; bar: number };
       ({ ...x, a: 0, b: 1 });
     `,
-    code`
+    dedent`\
       declare const x: { foo: number; bar: number };
       Object.assign(x, { a: 0, b: 1 });
     `,
@@ -33,16 +34,16 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
     `({ a: 0, b: 1, ...{ c: 2, d: 3, ...{ e: 4, f: 5 } } })`,
     `Object.assign({ a: 0, b: 1 }, { c: 2, d: 3, ...{ e: 4, f: 5 } })`,
     // OK for any
-    code`
+    dedent`\
       declare const x: any;
       ({ a: 0, b: 1, ...x });
     `,
-    code`
+    dedent`\
       declare const x: any;
       Object.assign({ a: 0, b: 1 }, x);
     `,
     // OK if the object has only index signatures
-    code`
+    dedent`\
       declare const x: { [key: string]: number };
       declare const y: { [key: string]: string };
       ({ ...x, ...y });
@@ -51,7 +52,7 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
   invalid: [
     // Error at the middle or end of the object literal / Object.assign()
     {
-      code: code`
+      code: dedent`\
         declare const x: { foo: number; bar: number };
         ({ a: 0, ...x, b: 1 });
       `,
@@ -64,7 +65,7 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
       ],
     },
     {
-      code: code`
+      code: dedent`\
         declare const x: { foo: number; bar: number };
         Object.assign({ a: 0 }, x, { b: 1 })
       `,
@@ -77,7 +78,7 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
       ],
     },
     {
-      code: code`
+      code: dedent`\
         declare const x: { foo: number; bar: number };
         ({ a: 0, b: 1, ...x });
       `,
@@ -90,7 +91,7 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
       ],
     },
     {
-      code: code`
+      code: dedent`\
         declare const x: { foo: number; bar: number };
         Object.assign({ a: 0, b: 1 }, x);
       `,
@@ -104,7 +105,7 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
     },
     // Error if possibly contains unknown properties
     {
-      code: code`
+      code: dedent`\
         declare const x: { foo: number; bar: number };
         ({ a: 0, b: 1, ...{ ...x, c: 1, d: 2 } });
       `,
@@ -117,7 +118,7 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
       ],
     },
     {
-      code: code`
+      code: dedent`\
         declare const x: { foo: number; bar: number };
         Object.assign({ a: 0, b: 1 }, { ...x, c: 1, d: 2 });
       `,
@@ -131,7 +132,7 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
     },
     // Error if the object has only index signatures but it is disallowed by the option
     {
-      code: code`
+      code: dedent`\
         declare const x: { [key: string]: number };
         declare const y: { [key: string]: string };
         ({ ...x, ...y });

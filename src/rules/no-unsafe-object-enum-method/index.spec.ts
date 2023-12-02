@@ -1,5 +1,6 @@
 import { RuleTester } from "@typescript-eslint/rule-tester";
-import { code, getFixturesDir } from "../__tests__/utils";
+import { dedent } from "@qnighy/dedent";
+import { getFixturesDir } from "../__tests__/utils";
 import rule from ".";
 
 const ruleTester = new RuleTester({
@@ -15,24 +16,24 @@ ruleTester.run("no-unsafe-object-enum-method", rule, {
     // OK if all the argument's properties are known
     `Object.keys({ a: 0, b: 1, ...{ c: 2, d: 3, ...{ e: 4, f: 5 } } })`,
     // OK if the argument's type is any or non-primitive
-    code`
+    dedent`\
       declare const x: any;
       Object.keys(x);
     `,
-    code`
+    dedent`\
       declare const x: object;
       Object.keys(x);
     `,
     // OK if the argument's type has index signatures
-    code`
+    dedent`\
       declare const x: { [key: string]: number };
       Object.keys(x);
     `,
-    code`
+    dedent`\
       declare const x: { [key: number]: number };
       Object.keys(x);
     `,
-    code`
+    dedent`\
       declare const x: { [key: symbol]: number };
       Object.keys(x);
     `,
@@ -40,7 +41,7 @@ ruleTester.run("no-unsafe-object-enum-method", rule, {
   invalid: [
     // Error if the argument possibly has unknown properties
     {
-      code: code`
+      code: dedent`\
         declare const x: { foo: number; bar: number };
         Object.keys({ a: 0, b: 1, ...{ ...x, c: 1, d: 2 } });
       `,
@@ -56,7 +57,7 @@ ruleTester.run("no-unsafe-object-enum-method", rule, {
     {
       // In this case, the argument's type does not have index signatures,
       // and thus the argument has possibly unknown properties.
-      code: code`
+      code: dedent`\
         declare const x: { [key: string]: number };
         Object.keys({ a: 0, b: 1, ...{ ...x, c: 1, d: 2 } });
       `,
@@ -71,7 +72,7 @@ ruleTester.run("no-unsafe-object-enum-method", rule, {
     },
     // Error if the argument's type does not have index signatures
     {
-      code: code`
+      code: dedent`\
         declare const x: { foo: number; bar: number };
         Object.keys(x);
       `,
@@ -85,7 +86,7 @@ ruleTester.run("no-unsafe-object-enum-method", rule, {
       ],
     },
     {
-      code: code`
+      code: dedent`\
         declare const x: { foo: number; bar: number };
         Object.values(x);
       `,
@@ -99,7 +100,7 @@ ruleTester.run("no-unsafe-object-enum-method", rule, {
       ],
     },
     {
-      code: code`
+      code: dedent`\
         declare const x: { foo: number; bar: number };
         Object.entries(x);
       `,
@@ -114,7 +115,7 @@ ruleTester.run("no-unsafe-object-enum-method", rule, {
     },
     // Error if the argument's type has index signatures but it is disallowed by the option
     {
-      code: code`
+      code: dedent`\
         declare const x: { [key: string]: number };
         Object.keys(x);
       `,

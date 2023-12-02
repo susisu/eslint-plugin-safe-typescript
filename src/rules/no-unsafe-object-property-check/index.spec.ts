@@ -1,5 +1,6 @@
 import { RuleTester } from "@typescript-eslint/rule-tester";
-import { code, getFixturesDir } from "../__tests__/utils";
+import { dedent } from "@qnighy/dedent";
+import { getFixturesDir } from "../__tests__/utils";
 import rule from ".";
 
 const ruleTester = new RuleTester({
@@ -13,16 +14,16 @@ const ruleTester = new RuleTester({
 ruleTester.run("no-unsafe-object-property-check", rule, {
   valid: [
     // OK for any and non-primitive values
-    code`
+    dedent`\
       declare const x: any;
       "a" in x;
     `,
-    code`
+    dedent`\
       declare const x: object;
       "a" in x;
     `,
     // OK for index signatures
-    code`
+    dedent`\
       declare const x: { [key: string]: number };
       "a" in x;
     `,
@@ -30,7 +31,7 @@ ruleTester.run("no-unsafe-object-property-check", rule, {
   invalid: [
     // Error if it possibly narrows type
     {
-      code: code`
+      code: dedent`\
         declare const x: { a: number } | { b: string };
         "a" in x;
       `,
@@ -43,7 +44,7 @@ ruleTester.run("no-unsafe-object-property-check", rule, {
       ],
     },
     {
-      code: code`
+      code: dedent`\
         declare const x: { a: number } | { b: string } | { [key: string]: number };
         "a" in x;
       `,
