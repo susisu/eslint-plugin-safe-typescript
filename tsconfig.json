@@ -12,8 +12,7 @@
     "strict": true,
     "noImplicitOverride": true,
     "sourceMap": true,
-    // See https://github.com/typescript-eslint/typescript-eslint/issues/5032
-    "declaration": false,
+    "declaration": true,
     "declarationMap": false,
     "skipLibCheck": true
   },

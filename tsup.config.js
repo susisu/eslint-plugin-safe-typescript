@@ -6,7 +6,6 @@ export default defineConfig({
   format: ["esm", "cjs"],
   splitting: false,
   sourcemap: true,
-  // See https://github.com/typescript-eslint/typescript-eslint/issues/5032
-  dts: false,
+  dts: true,
   clean: true,
 });

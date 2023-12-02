@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- fix TS2742 error
+import type { ESLintUtils } from "@typescript-eslint/utils";
 import noObjectAssign from "./no-object-assign";
 import noTypeAssertion from "./no-type-assertion";
 import noUnsafeObjectEnumMethod from "./no-unsafe-object-enum-method";
