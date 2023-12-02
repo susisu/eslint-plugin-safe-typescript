@@ -15,7 +15,8 @@
     "sourceMap": true,
     // See https://github.com/typescript-eslint/typescript-eslint/issues/5032
     "declaration": false,
-    "declarationMap": false
+    "declarationMap": false,
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*"
