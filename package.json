@@ -17,7 +17,8 @@
     "format:check": "prettier --check '*.js' src",
     "lint": "eslint --fix '*.js' src",
     "lint:check": "eslint '*.js' src",
-    "test": "jest",
+    "test": "vitest run --coverage",
+    "test:dev": "vitest dev --coverage.enabled --coverage.reporter=text",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "build": "tsc --build tsconfig.build.json",
     "clean": "run-s clean:build clean:rm",
@@ -35,21 +36,20 @@
   "devDependencies": {
     "@susisu/eslint-config": "^0.0.71",
     "@types/common-tags": "^1.8.4",
-    "@types/jest": "^29.5.10",
     "@types/node": "^20.10.2",
     "@typescript-eslint/parser": "^6.13.1",
     "@typescript-eslint/rule-tester": "^6.13.1",
+    "@vitest/coverage-v8": "^0.34.6",
     "common-tags": "^1.8.2",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-eslint-plugin": "^5.1.1",
     "eslint-plugin-jest": "^27.6.0",
     "eslint-plugin-jest-formatting": "^3.1.0",
-    "jest": "^29.7.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.1.0",
     "rimraf": "^5.0.5",
-    "ts-jest": "^29.1.1",
-    "typescript": "~5.3.2"
+    "typescript": "~5.3.2",
+    "vitest": "^0.34.6"
   }
 }
