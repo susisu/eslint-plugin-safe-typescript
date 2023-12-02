@@ -5,23 +5,31 @@
 ESLint plugin that makes your TypeScript code safer
 
 ## Installation
+
 This plugin requires `typescript` and `@typescript-eslint/parser` as peer dependencies, so install them if you don't have them installed yet.
 
 ``` shell
+# npm
 npm i --save-dev typescript @typescript-eslint/parser
-# or
+# yarn
 yarn add -D typescript @typescript-eslint/parser
+# pnpm
+pnpm add -D typescript @typescript-eslint/parser
 ```
 
 Then install the plugin.
 
 ``` shell
+# npm
 npm i --save-dev @susisu/eslint-plugin-safe-typescript
-# or
+# yarn
 yarn add -D @susisu/eslint-plugin-safe-typescript
+# pnpm
+pnpm add -D @susisu/eslint-plugin-safe-typescript
 ```
 
 ## Usage
+
 Set `parser` to `@typescript-eslint/parser`, and add `@susisu/safe-typescript` to `plugins`.
 
 ``` json
@@ -45,6 +53,7 @@ If you use the rules that require type information, `parserOptions.project` will
 ```
 
 ## Recommended configuration
+
 Add `plugin:@susisu/safe-typescript/recommended` to `extends` to use the recommended configuration.
 
 ``` json
@@ -56,6 +65,7 @@ Add `plugin:@susisu/safe-typescript/recommended` to `extends` to use the recomme
 Note that rules in the recommended configuration require type information.
 
 ## Rules
+
 ✅ = recommended, 🔧 = fixable, 💭 = requires type information
 
 | Name | Description | ✅ | 🔧 | 💭 |
@@ -67,6 +77,7 @@ Note that rules in the recommended configuration require type information.
 | [`no-unsafe-object-property-overwrite`](https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/no-unsafe-object-property-overwrite/README.md) | Disallow possibly unsafe overwrites of object properties. | ✅ | | 💭 |
 
 ## Contributing
+
 Issues and PRs are welcome!
 Feel free to open issues if you have any problems or ideas.
 
