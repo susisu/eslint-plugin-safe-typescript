@@ -13,19 +13,17 @@
     "!src/**/__tests__"
   ],
   "scripts": {
-    "lint": "run-s lint:eslint lint:prettier",
-    "lint-fix": "run-s lint-fix:eslint lint-fix:prettier",
-    "lint:eslint": "eslint '*.js' src",
-    "lint-fix:eslint": "eslint --fix '*.js' src",
-    "lint:prettier": "prettier --check '*.js' src",
-    "lint-fix:prettier": "prettier --write '*.js' src",
+    "format": "prettier --write '*.js' src",
+    "format:check": "prettier --check '*.js' src",
+    "lint": "eslint --fix '*.js' src",
+    "lint:check": "eslint '*.js' src",
     "test": "jest",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "build": "tsc --build tsconfig.build.json",
     "clean": "run-s clean:build clean:rm",
     "clean:build": "tsc --build tsconfig.build.json --clean",
     "clean:rm": "rimraf lib",
-    "prepublishOnly": "run-s clean lint test build"
+    "prepublishOnly": "run-s clean format:check lint:check test build"
   },
   "dependencies": {
     "@typescript-eslint/utils": "^6.13.1"
