@@ -1,3 +1,11 @@
+## 0.5.0 (2023-12-03)
+
+- **BREAKING** Drop support for Node.js 16
+- Type declarations are now included again
+  - It would never be used in the previous config format (`.eslintrc`), but will be useful in the new flat config format.
+- The package is now ESM/CJS hybrid
+- Upgrade dependencies
+
 ## 0.4.1 (2023-07-16)
 
 - Fix peerDependencies was not updated
