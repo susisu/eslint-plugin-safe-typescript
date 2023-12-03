@@ -11,10 +11,12 @@
   "exports": {
     ".": {
       "import": {
-        "default": "./lib/index.js"
+        "default": "./lib/index.js",
+        "types": "./lib/index.d.ts"
       },
       "require": {
-        "default": "./lib/index.cjs"
+        "default": "./lib/index.cjs",
+        "types": "./lib/index.d.cts"
       }
     }
   },
