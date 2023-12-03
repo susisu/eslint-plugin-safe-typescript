@@ -1,3 +1,7 @@
+## 0.5.1 (2023-12-03)
+
+- Fix `types` were missing in the `exports` field
+
 ## 0.5.0 (2023-12-03)
 
 - **BREAKING** Drop support for Node.js 16
