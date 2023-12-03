@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@qnighy/dedent": "^0.1.1",
-    "@susisu/eslint-config": "^0.0.71",
+    "@susisu/eslint-config": "^0.0.72",
     "@types/node": "^20.10.2",
     "@typescript-eslint/parser": "^6.13.1",
     "@typescript-eslint/rule-tester": "^6.13.1",
