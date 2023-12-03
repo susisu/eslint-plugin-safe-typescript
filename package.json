@@ -33,7 +33,7 @@
     "test:dev": "vitest dev --coverage.enabled --coverage.reporter=text",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "build": "tsup",
-    "prepublishOnly": "run-s format:check lint:check test build"
+    "prepublishOnly": "run-s format:check lint:check typecheck test build"
   },
   "dependencies": {
     "@typescript-eslint/utils": "^6.13.1"
