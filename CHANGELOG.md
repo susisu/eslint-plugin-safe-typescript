@@ -1,3 +1,7 @@
+## 0.5.2 (2023-12-16)
+
+- Add default export for ESM
+
 ## 0.5.1 (2023-12-03)
 
 - Fix `types` were missing in the `exports` field
@@ -7,7 +11,7 @@
 - **BREAKING** Drop support for Node.js 16
 - Type declarations are now included again
   - It would never be used in the previous config format (`.eslintrc`), but will be useful in the new flat config format.
-- The package is now ESM/CJS hybrid
+- The package is now ESM/CJS dual
 - Upgrade dependencies
 
 ## 0.4.1 (2023-07-16)
