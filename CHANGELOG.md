@@ -1,3 +1,8 @@
+## 0.5.3 (2024-02-10)
+
+- Upgrade dependencies
+- Add docs for flat config
+
 ## 0.5.2 (2023-12-16)
 
 - Add default export for ESM
