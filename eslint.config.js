@@ -14,7 +14,7 @@ export default [
       languageOptions: {
         sourceType: "module",
         parserOptions: {
-          project: "./tsconfig.json",
+          project: true,
         },
         globals: {
           ...globals.es2021,
