@@ -30,11 +30,17 @@ pnpm add -D @susisu/eslint-plugin-safe-typescript
 
 ## Usage
 
-Set `parser` to `@typescript-eslint/parser`, and add `@susisu/safe-typescript` to `plugins`.
+Enable `@typescript-eslint/parser` and add `@susisu/eslint-plugin-safe-typescript` to plugins.
+In addition, `parserOptions.project` is required for rules that use type information.
+
+`.eslintrc`
 
 ``` json
 {
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": true
+  },
   "plugins": ["@susisu/safe-typescript"],
   "rules": {
     "@susisu/safe-typescript/no-object-assign": "error"
@@ -42,19 +48,37 @@ Set `parser` to `@typescript-eslint/parser`, and add `@susisu/safe-typescript` t
 }
 ```
 
-If you use the rules that require type information, `parserOptions.project` will be required.
+`eslint.config.js`
 
-``` json
-{
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  }
-}
+``` js
+import tsEslintParser from "@typescript-eslint/parser";
+import safeTsPlugin from "@susisu/eslint-plugin-safe-typescript";
+
+export default [
+  {
+    languageOptions: {
+      parser: tsEslintParser,
+      parserOptions: {
+        project: true,
+      },
+    },
+    plugins: {
+      "safe-typescript": safeTsPlugin,
+    },
+    rules: {
+      "safe-typescript/no-object-assign": "error",
+    },
+  },
+];
 ```
 
 ## Recommended configuration
 
-Add `plugin:@susisu/safe-typescript/recommended` to `extends` to use the recommended configuration.
+The plugin provides a configuration set for the recommended rules (see [Rules](#rules) for which rules are recommended).
+
+Since some rules in the recommended configuration require type information, `parserOptions.project` must be set.
+
+`eslintrc`
 
 ``` json
 {
@@ -62,7 +86,19 @@ Add `plugin:@susisu/safe-typescript/recommended` to `extends` to use the recomme
 }
 ```
 
-Note that rules in the recommended configuration require type information.
+`eslint.config.js`
+
+``` js
+export default [
+  safeTsPlugin.configs.recommended,
+  // or extend in rules
+  // {
+  //   rules: {
+  //     ...safeTsPlugin.configs.recommended.rules,
+  //   },
+  // },
+];
+```
 
 ## Rules
 
