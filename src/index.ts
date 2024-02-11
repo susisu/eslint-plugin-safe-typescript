@@ -1,14 +1,22 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars -- fix TS2742 error
 import type { ESLintUtils } from "@typescript-eslint/utils";
-// for module augmentation
-import type {} from "eslint-define-config";
 import rules from "./rules";
 import configs from "./configs";
 
 export { rules, configs };
 export default { rules, configs };
 
-// NOTE: declaring module augmentation in non-index files seems to be unstable because of tree-shaking
+// Declaring module augmentation is very unstable due to tree-shaking.
+// To avoid `import` and `declare` statements from being removed,
+// 1. export something from `eslint-define-config` (anything will be ok)
+// 2. declare in the index file (declarations in non-index files will be removed in some cases)
+import type { CustomRuleOptions } from "eslint-define-config";
+
+/** @deprecated Never use this. */
+type Never = CustomRuleOptions extends 0 ? unknown : never;
+
+export { Never as __internal__never };
+
 declare module "eslint-define-config" {
   export interface CustomRuleOptions {
     "@susisu/safe-typescript/no-object-assign": [];
