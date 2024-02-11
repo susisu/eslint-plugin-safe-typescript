@@ -8,6 +8,9 @@ dependencies:
   '@typescript-eslint/utils':
     specifier: ^6.21.0
     version: 6.21.0(eslint@8.56.0)(typescript@5.3.3)
+  eslint-define-config:
+    specifier: ^2.1.0
+    version: 2.1.0
 
 devDependencies:
   '@qnighy/dedent':
@@ -1184,7 +1187,6 @@ packages:
   /eslint-define-config@2.1.0:
     resolution: {integrity: sha512-QUp6pM9pjKEVannNAbSJNeRuYwW3LshejfyBBpjeMGaJjaDUpVps4C6KVR8R7dWZnD3i0synmrE36znjTkJvdQ==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0', pnpm: '>=8.6.0'}
-    dev: true
 
   /eslint-plugin-eslint-plugin@5.3.0(eslint@8.56.0):
     resolution: {integrity: sha512-mRMH3WwewpZjbdOFbE0Vr0EJ4Q6oIXLRGkFQyRM+HWhpNIhYWy/3solQ+blVS8noSkD2/jq7iW3Ke3N0viUJ/w==}

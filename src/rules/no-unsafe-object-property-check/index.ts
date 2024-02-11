@@ -1,7 +1,15 @@
 import { ESLintUtils } from "@typescript-eslint/utils";
+import type {} from "eslint-define-config";
 import { createRule, hasIndexSignatures, isAnyType, isNonPrimitiveType } from "../utils";
 
 type Options = [];
+
+declare module "eslint-define-config" {
+  export interface CustomRuleOptions {
+    "@susisu/safe-typescript/no-unsafe-object-property-check": Options;
+    "safe-typescript/no-unsafe-object-property-check": Options;
+  }
+}
 
 type MessageIds = "noInOperator";
 

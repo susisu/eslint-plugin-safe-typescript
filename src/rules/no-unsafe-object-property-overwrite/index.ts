@@ -1,4 +1,5 @@
 import { AST_NODE_TYPES, ESLintUtils } from "@typescript-eslint/utils";
+import type {} from "eslint-define-config";
 import {
   createRule,
   hasOnlyIndexSignatures,
@@ -12,6 +13,13 @@ type Options = [
     allowIndexSignatures?: boolean;
   },
 ];
+
+declare module "eslint-define-config" {
+  export interface CustomRuleOptions {
+    "@susisu/safe-typescript/no-unsafe-object-property-overwrite": Options;
+    "safe-typescript/no-unsafe-object-property-overwrite": Options;
+  }
+}
 
 type MessageIds = "noSpreadSyntax" | "noObjectAssign";
 
