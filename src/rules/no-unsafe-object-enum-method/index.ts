@@ -1,5 +1,4 @@
 import { AST_NODE_TYPES, ESLintUtils } from "@typescript-eslint/utils";
-import type {} from "eslint-define-config";
 import {
   createRule,
   hasIndexSignatures,
@@ -14,12 +13,6 @@ type Options = [
     allowIndexSignatures?: boolean;
   },
 ];
-
-declare module "eslint-define-config" {
-  export interface CustomRuleOptions {
-    "@susisu/safe-typescript/no-unsafe-object-enum-method": Options;
-  }
-}
 
 type MessageIds = "noEnumMethod";
 
