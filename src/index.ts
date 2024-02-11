@@ -6,17 +6,7 @@ import configs from "./configs";
 export { rules, configs };
 export default { rules, configs };
 
-// Declaring module augmentation is very unstable due to tree-shaking.
-// To avoid `import` and `declare` statements from being removed,
-// 1. export something from `eslint-define-config` (anything will be ok)
-// 2. declare in the index file (declarations in non-index files will be removed in some cases)
-import type { CustomRuleOptions } from "eslint-define-config";
-
-/** @deprecated Never use this. */
-type Never = CustomRuleOptions extends 0 ? unknown : never;
-
-export { Never as __internal__never };
-
+// NOTE: module augmentations that are not in src/index.ts could be removed due to tree-shaking
 declare module "eslint-define-config" {
   export interface CustomRuleOptions {
     "@susisu/safe-typescript/no-object-assign": [];

@@ -1,3 +1,4 @@
+// NOTE: module augmentation in src/index.ts depends on this import statement to exist
 import type { FlatESLintConfig } from "eslint-define-config";
 
 const config: Pick<FlatESLintConfig, "rules"> = {
