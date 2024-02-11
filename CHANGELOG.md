@@ -1,3 +1,7 @@
+## 0.6.0 (2024-02-11)
+
+- Provide rule option types for [`eslint-define-config`](https://github.com/eslint-types/eslint-define-config)
+
 ## 0.5.3 (2024-02-10)
 
 - Upgrade dependencies
