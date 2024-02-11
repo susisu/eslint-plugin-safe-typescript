@@ -1,9 +1,9 @@
-import { make } from "@susisu/eslint-config";
+import { config } from "@susisu/eslint-config";
 import eslintPluginPlugin from "eslint-plugin-eslint-plugin";
 import vitestPlugin from "eslint-plugin-vitest";
 import globals from "globals";
 
-export default make({}, [
+export default config({}, [
   {
     plugins: {
       "eslint-plugin": eslintPluginPlugin,
