@@ -7,7 +7,6 @@ type Options = [];
 declare module "eslint-define-config" {
   export interface CustomRuleOptions {
     "@susisu/safe-typescript/no-unsafe-object-property-check": Options;
-    "safe-typescript/no-unsafe-object-property-check": Options;
   }
 }
 

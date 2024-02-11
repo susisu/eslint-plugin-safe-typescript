@@ -9,7 +9,6 @@ type Options = [];
 declare module "eslint-define-config" {
   export interface CustomRuleOptions {
     "@susisu/safe-typescript/no-type-assertion": Options;
-    "safe-typescript/no-type-assertion": Options;
   }
 }
 

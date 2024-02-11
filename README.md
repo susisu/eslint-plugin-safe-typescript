@@ -63,10 +63,10 @@ export default [
       },
     },
     plugins: {
-      "safe-typescript": safeTsPlugin,
+      "@susisu/safe-typescript": safeTsPlugin,
     },
     rules: {
-      "safe-typescript/no-object-assign": "error",
+      "@susisu/safe-typescript/no-object-assign": "error",
     },
   },
 ];
