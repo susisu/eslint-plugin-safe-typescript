@@ -1,3 +1,7 @@
+## 0.6.1 (2024-02-11)
+
+- Refactor how the module augmentation for eslint-define-config is exported
+
 ## 0.6.0 (2024-02-11)
 
 - Provide rule option types for [`eslint-define-config`](https://github.com/eslint-types/eslint-define-config)
