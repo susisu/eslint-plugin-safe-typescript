@@ -1,4 +1,6 @@
-export default {
+import type { FlatESLintConfig } from "eslint-define-config";
+
+const config: Pick<FlatESLintConfig, "rules"> = {
   rules: {
     "@susisu/safe-typescript/no-object-assign": "error",
     "@susisu/safe-typescript/no-type-assertion": "error",
@@ -7,3 +9,5 @@ export default {
     "@susisu/safe-typescript/no-unsafe-object-property-overwrite": "error",
   },
 };
+
+export default config;
