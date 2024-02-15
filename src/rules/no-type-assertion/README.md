@@ -1,6 +1,6 @@
 # `no-type-assertion`
 
-Disallow type assertions like `x as T`.
+Disallow type assertions like `x as T` and `<T>x`.
 
 Because downcasting is allowed, type assertions are possibly unsafe.
 
@@ -23,6 +23,13 @@ const c = { foo: 42 } as { foo: number };
 const d = { foo: 42 } as {};
 ```
 
+``` ts
+const a = <{ foo: number; bar: number }>{ foo: 42 };
+const b = <never>{ foo: 42 };
+const c = <{ foo: number }>{ foo: 42 };
+const d = <{}>{ foo: 42 };
+```
+
 👍 Examples of correct code for this rule:
 
 ``` ts
@@ -32,6 +39,12 @@ const x = { foo: 42 } as const;
 const y = { foo: 42 } as unknown;
 // `as any` is unsafe, but that is because of `any`, not `as`
 const z = { foo: 42 } as any;
+```
+
+``` ts
+const x = <const>{ foo: 42 };
+const y = <unknown>{ foo: 42 };
+const z = <any>{ foo: 42 };
 ```
 
 ## When Not To Use It

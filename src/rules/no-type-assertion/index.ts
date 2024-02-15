@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars -- fix TS2742 error
 import type { ESLintUtils } from "@typescript-eslint/utils";
+import type { TSESTree } from "@typescript-eslint/utils";
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 import { createRule } from "../utils";
 
@@ -20,8 +21,8 @@ export default createRule<Options, MessageIds>({
     schema: [],
   },
   defaultOptions: [],
-  create: (context) => ({
-    TSAsExpression: (node) => {
+  create: (context) => {
+    const check = (node: TSESTree.TSAsExpression | TSESTree.TSTypeAssertion): void => {
       const annotation = node.typeAnnotation;
       // `as const` is a safe expression
       if (
@@ -43,6 +44,14 @@ export default createRule<Options, MessageIds>({
         node,
         messageId: "noTypeAssertion",
       });
-    },
-  }),
+    };
+    return {
+      TSAsExpression: (node) => {
+        check(node);
+      },
+      TSTypeAssertion: (node) => {
+        check(node);
+      },
+    };
+  },
 });
