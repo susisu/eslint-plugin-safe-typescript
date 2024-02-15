@@ -42,8 +42,17 @@
     "eslint-define-config": "^2.1.0"
   },
   "peerDependencies": {
-    "@typescript-eslint/parser": ">=6.0.0",
-    "typescript": "*"
+    "@typescript-eslint/parser": "^7.0.0",
+    "typescript": "*",
+    "typescript-eslint": "^7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@typescript-eslint/parser": {
+      "optional": true
+    },
+    "typescript-eslint": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@qnighy/dedent": "^0.1.1",
