@@ -2,22 +2,14 @@
 
 [![CI](https://github.com/susisu/eslint-plugin-safe-typescript/workflows/CI/badge.svg)](https://github.com/susisu/eslint-plugin-safe-typescript/actions?query=workflow%3ACI)
 
-ESLint plugin that makes your TypeScript code safer
+An [ESLint](https://eslint.org) plugin that makes your TypeScript code safer
 
 ## Installation
 
-This plugin requires `typescript` and `@typescript-eslint/parser` as peer dependencies, so install them if you don't have them installed yet.
+This plugin requires [TypeScript](https://www.typescriptlang.org/) and [typescript-eslint](https://typescript-eslint.io/).
+If you haven't installed them in your project, follow the guide on typescript-eslint's [Getting Started](https://typescript-eslint.io/getting-started) page.
 
-``` shell
-# npm
-npm i --save-dev typescript @typescript-eslint/parser
-# yarn
-yarn add -D typescript @typescript-eslint/parser
-# pnpm
-pnpm add -D typescript @typescript-eslint/parser
-```
-
-Then install the plugin.
+Once you're ready, install this plugin:
 
 ``` shell
 # npm
@@ -28,42 +20,43 @@ yarn add -D @susisu/eslint-plugin-safe-typescript
 pnpm add -D @susisu/eslint-plugin-safe-typescript
 ```
 
-## Usage
+## Configuration
 
-Enable `@typescript-eslint/parser` and add `@susisu/eslint-plugin-safe-typescript` to plugins.
-In addition, `parserOptions.project` is required for rules that use type information.
+1. Enable typescript-eslint parser
+2. Add `@susisu/eslint-plugin-safe-typescript` to plugins
+3. (Optional) Add `parserOptions.project` if you enable rules that use type information.
 
-`.eslintrc`
+`.eslintrc`:
 
 ``` json
 {
-  "parser": "@typescript-eslint/parser",
+  "parser": "@typescript-eslint/parser", // (1)
   "parserOptions": {
-    "project": true
+    "project": true // (3)
   },
-  "plugins": ["@susisu/safe-typescript"],
+  "plugins": ["@susisu/safe-typescript"], // (2)
   "rules": {
     "@susisu/safe-typescript/no-object-assign": "error"
   }
 }
 ```
 
-`eslint.config.js`
+`eslint.config.js`:
 
 ``` js
-import tsEslintParser from "@typescript-eslint/parser";
+import tsEslint from "typescript-eslint";
 import safeTsPlugin from "@susisu/eslint-plugin-safe-typescript";
 
 export default [
   {
     languageOptions: {
-      parser: tsEslintParser,
+      parser: tsEslint.parser, // (1)
       parserOptions: {
-        project: true,
+        project: true, // (3)
       },
     },
     plugins: {
-      "@susisu/safe-typescript": safeTsPlugin,
+      "@susisu/safe-typescript": safeTsPlugin, // (2)
     },
     rules: {
       "@susisu/safe-typescript/no-object-assign": "error",
@@ -74,9 +67,9 @@ export default [
 
 ## Recommended configuration
 
-The plugin provides a configuration set for the recommended rules (see [Rules](#rules) for which rules are recommended).
+This plugin also provides a configuration set for the recommended rules (see [Rules](#rules) for which rules are recommended).
 
-Since some rules in the recommended configuration require type information, `parserOptions.project` must be set.
+Since some rules in the recommended configuration require type information, `parserOptions.project` must be set in your config.
 
 `eslintrc`
 
@@ -91,7 +84,7 @@ Since some rules in the recommended configuration require type information, `par
 ``` js
 export default [
   safeTsPlugin.configs.recommended,
-  // or extend in rules
+  // or extend in `rules`
   // {
   //   rules: {
   //     ...safeTsPlugin.configs.recommended.rules,
