@@ -1,3 +1,8 @@
+## 0.7.0 (2024-02-15)
+
+- Upgrade typescript-eslint to v7
+- `no-type-assertion`: Add support for angle bracket style type assertions like `<T>x`
+
 ## 0.6.1 (2024-02-11)
 
 - Refactor how the module augmentation for eslint-define-config is exported
