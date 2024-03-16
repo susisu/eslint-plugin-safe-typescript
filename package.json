@@ -38,7 +38,7 @@
     "test:dev": "vitest dev --coverage.enabled --coverage.reporter=text",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "build": "tsup",
-    "copy-dts": "cp -r src/dts lib/dts",
+    "copy-dts": "rm -rf lib/dts/ && cp -r src/dts/ lib/dts/",
     "prepublishOnly": "run-s format:check lint:check typecheck test build copy-dts"
   },
   "dependencies": {
