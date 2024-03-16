@@ -1,3 +1,10 @@
+## 0.8.0 (2024-03-16)
+
+- Upgrade typescript-eslint to 7.2.x to support TypeScript 5.4
+- Change how the plugin and its type are exported to improve compatibility with `@types/eslint`
+  - Shortly, the plugin type is now compatible with `ESLint.Plugin`
+- Move [`eslint-define-config`](https://github.com/eslint-types/eslint-define-config) support to a submodule `@susisu/eslint-plugin-safe-typescript/define-config-support`
+
 ## 0.7.0 (2024-02-15)
 
 - Upgrade typescript-eslint to v7
