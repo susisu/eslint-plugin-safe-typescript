@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@types/eslint':
+    specifier: ^8.56.5
+    version: 8.56.5
   '@typescript-eslint/utils':
     specifier: ^7.2.0
     version: 7.2.0(eslint@8.57.0)(typescript@5.4.2)
@@ -21,7 +24,7 @@ devDependencies:
     version: 0.1.1
   '@susisu/eslint-config':
     specifier: ^0.0.79
-    version: 0.0.79(eslint@8.57.0)(typescript-eslint@7.0.1)(typescript@5.4.2)
+    version: 0.0.79(eslint@8.57.0)(typescript@5.4.2)
   '@types/node':
     specifier: ^20.11.27
     version: 20.11.27
@@ -639,13 +642,13 @@ packages:
       - typescript
     dev: true
 
-  /@susisu/eslint-config@0.0.79(eslint@8.57.0)(typescript-eslint@7.0.1)(typescript@5.4.2):
+  /@susisu/eslint-config@0.0.79(eslint@8.57.0)(typescript@5.4.2):
     resolution: {integrity: sha512-scxoYBYnoDzdw/LF1LrxCdGIpJF7OduLnrzNyUV+YPPC0T+L4TH6+ZAGc45vGYujhEcsZZGOcJnaIJmE7fkOjA==}
     peerDependencies:
       eslint: ^8.56.0
     dependencies:
       '@stylistic/eslint-plugin': 1.6.1(eslint@8.57.0)(typescript@5.4.2)
-      '@susisu/eslint-plugin-safe-typescript': 0.7.0(@typescript-eslint/parser@7.2.0)(eslint@8.57.0)(typescript-eslint@7.0.1)(typescript@5.4.2)
+      '@susisu/eslint-plugin-safe-typescript': 0.7.0(@typescript-eslint/parser@7.2.0)(eslint@8.57.0)(typescript@5.4.2)
       '@types/eslint-config-prettier': 6.11.3
       '@typescript-eslint/eslint-plugin': 7.0.1(@typescript-eslint/parser@7.2.0)(eslint@8.57.0)(typescript@5.4.2)
       '@typescript-eslint/parser': 7.2.0(eslint@8.57.0)(typescript@5.4.2)
@@ -658,7 +661,7 @@ packages:
       - typescript-eslint
     dev: true
 
-  /@susisu/eslint-plugin-safe-typescript@0.7.0(@typescript-eslint/parser@7.2.0)(eslint@8.57.0)(typescript-eslint@7.0.1)(typescript@5.4.2):
+  /@susisu/eslint-plugin-safe-typescript@0.7.0(@typescript-eslint/parser@7.2.0)(eslint@8.57.0)(typescript@5.4.2):
     resolution: {integrity: sha512-N91aAZSQQbv57Jgu6LIq25PuC97Dp7K8B9JXWdua278wkSBPfPcWwFoZ3l1hDZjRtFRaDTHnzHjqp1iI4uNHzw==}
     peerDependencies:
       '@typescript-eslint/parser': ^7.0.0
@@ -674,7 +677,6 @@ packages:
       '@typescript-eslint/utils': 7.2.0(eslint@8.57.0)(typescript@5.4.2)
       eslint-define-config: 2.1.0
       typescript: 5.4.2
-      typescript-eslint: 7.0.1(eslint@8.57.0)(typescript@5.4.2)
     transitivePeerDependencies:
       - eslint
       - supports-color
@@ -684,9 +686,15 @@ packages:
     resolution: {integrity: sha512-3wXCiM8croUnhg9LdtZUJQwNcQYGWxxdOWDjPe1ykCqJFPVpzAKfs/2dgSoCtAvdPeaponcWPI7mPcGGp9dkKQ==}
     dev: true
 
+  /@types/eslint@8.56.5:
+    resolution: {integrity: sha512-u5/YPJHo1tvkSF2CE0USEkxon82Z5DBy2xR+qfyYNszpX9qcs4sT6uq2kBbj4BXY1+DBGDPnrhMZV3pKWGNukw==}
+    dependencies:
+      '@types/estree': 1.0.5
+      '@types/json-schema': 7.0.15
+    dev: false
+
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
-    dev: true
 
   /@types/istanbul-lib-coverage@2.0.6:
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
@@ -731,6 +739,7 @@ packages:
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@typescript-eslint/eslint-plugin@7.0.1(@typescript-eslint/parser@7.2.0)(eslint@8.57.0)(typescript@5.4.2):
     resolution: {integrity: sha512-OLvgeBv3vXlnnJGIAgCLYKjgMEU+wBGj07MQ/nxAaON+3mLzX7mJbhRYrVGiVvFiXtwFlkcBa/TtmglHy0UbzQ==}
@@ -780,6 +789,7 @@ packages:
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.2):
     resolution: {integrity: sha512-5FKsVcHTk6TafQKQbuIVkXq58Fnbkd2wDL4LB7AURN7RUOu1utVP+G8+6u3ZhEroW3DF6hyo3ZEXxgKgp4KeCg==}
@@ -2576,6 +2586,7 @@ packages:
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /typescript@5.4.2:
     resolution: {integrity: sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==}

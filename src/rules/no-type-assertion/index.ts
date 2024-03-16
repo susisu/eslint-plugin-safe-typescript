@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars -- fix TS2742 error
-import type { ESLintUtils } from "@typescript-eslint/utils";
 import type { TSESTree } from "@typescript-eslint/utils";
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 import { createRule } from "../utils";
@@ -8,7 +6,7 @@ type Options = [];
 
 type MessageIds = "noTypeAssertion";
 
-export default createRule<Options, MessageIds>({
+const rule = createRule<Options, MessageIds>({
   name: "no-type-assertion",
   meta: {
     type: "suggestion",
@@ -55,3 +53,5 @@ export default createRule<Options, MessageIds>({
     };
   },
 });
+
+export default rule;

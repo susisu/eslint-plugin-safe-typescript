@@ -16,7 +16,7 @@ type Options = [
 
 type MessageIds = "noEnumMethod";
 
-export default createRule<Options, MessageIds>({
+const rule = createRule<Options, MessageIds>({
   name: "no-unsafe-object-enum-method",
   meta: {
     type: "suggestion",
@@ -92,3 +92,5 @@ type ObjectEnumMethod = (typeof objectEnumMethods)[number];
 function isObjectEnumMethod(value: unknown): value is ObjectEnumMethod {
   return objectEnumMethods.some((method) => method === value);
 }
+
+export default rule;

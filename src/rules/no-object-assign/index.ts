@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars -- fix TS2742 error
-import type { ESLintUtils } from "@typescript-eslint/utils";
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
 import { createRule, matchObjectMethodCall } from "../utils";
 
@@ -7,7 +5,7 @@ type Options = [];
 
 type MessageIds = "noCopying" | "noMutation";
 
-export default createRule<Options, MessageIds>({
+const rule = createRule<Options, MessageIds>({
   name: "no-object-assign",
   meta: {
     type: "suggestion",
@@ -42,3 +40,5 @@ export default createRule<Options, MessageIds>({
     },
   }),
 });
+
+export default rule;

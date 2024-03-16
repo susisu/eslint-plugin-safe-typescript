@@ -1,7 +1,6 @@
-// NOTE: module augmentation in src/index.ts depends on this import statement to exist
-import type { FlatESLintConfig } from "eslint-define-config";
+import type { ESLint, Linter } from "eslint";
 
-const config: Pick<FlatESLintConfig, "rules"> = {
+const config: ESLint.ConfigData & Linter.FlatConfig = {
   rules: {
     "@susisu/safe-typescript/no-object-assign": "error",
     "@susisu/safe-typescript/no-type-assertion": "error",

@@ -5,7 +5,7 @@ type Options = [];
 
 type MessageIds = "noInOperator";
 
-export default createRule<Options, MessageIds>({
+const rule = createRule<Options, MessageIds>({
   name: "no-unsafe-object-property-check",
   meta: {
     type: "suggestion",
@@ -45,3 +45,5 @@ export default createRule<Options, MessageIds>({
     };
   },
 });
+
+export default rule;

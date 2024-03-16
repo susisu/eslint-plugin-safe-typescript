@@ -1,10 +1,15 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars -- fix TS2742 error
-import type { ESLintUtils } from "@typescript-eslint/utils";
+import type { ESLint } from "eslint";
 import rules from "./rules";
 import configs from "./configs";
 
-export { rules, configs };
-export default { rules, configs };
+const plugin = {
+  rules,
+  configs,
+} satisfies ESLint.Plugin;
+
+export default plugin;
+
+import type {} from "eslint-define-config";
 
 // NOTE: module augmentations that are not in src/index.ts could be removed due to tree-shaking
 declare module "eslint-define-config" {

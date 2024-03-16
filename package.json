@@ -38,6 +38,7 @@
     "prepublishOnly": "run-s format:check lint:check typecheck test build"
   },
   "dependencies": {
+    "@types/eslint": "^8.56.5",
     "@typescript-eslint/utils": "^7.2.0",
     "eslint-define-config": "^2.1.0"
   },
