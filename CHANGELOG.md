@@ -1,3 +1,8 @@
+## 0.8.1 (2024-06-19)
+
+- `no-unsafe-object-property-overwrite`: Fix false positive for conditionals
+- Upgrade dependencies
+
 ## 0.8.0 (2024-03-16)
 
 - Upgrade typescript-eslint to 7.2.x to support TypeScript 5.4
