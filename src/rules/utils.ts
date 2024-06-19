@@ -12,16 +12,22 @@ export const createRule = ESLintUtils.RuleCreator(
  * Checks if the value of the expression possibly contains properties that do not appear in its type.
  */
 export function possiblyContainsUnknownProperties(node: TSESTree.Expression): boolean {
-  if (node.type !== AST_NODE_TYPES.ObjectExpression) {
+  if (node.type === AST_NODE_TYPES.ObjectExpression) {
+    return node.properties.some((prop) => {
+      if (prop.type === AST_NODE_TYPES.SpreadElement) {
+        return possiblyContainsUnknownProperties(prop.argument);
+      } else {
+        return false;
+      }
+    });
+  } else if (node.type === AST_NODE_TYPES.ConditionalExpression) {
+    return (
+      possiblyContainsUnknownProperties(node.consequent) ||
+      possiblyContainsUnknownProperties(node.alternate)
+    );
+  } else {
     return true;
   }
-  return node.properties.some((prop) => {
-    if (prop.type === AST_NODE_TYPES.SpreadElement) {
-      return possiblyContainsUnknownProperties(prop.argument);
-    } else {
-      return false;
-    }
-  });
 }
 
 /**

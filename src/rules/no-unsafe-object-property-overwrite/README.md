@@ -58,28 +58,34 @@ function withMetadata(data: Data, metadata: string): DataWithMetadata {
 
 ``` ts
 declare const x: { foo: number; bar: number };
+declare const cond: boolean;
 
 ({ a: 0, ...x, b: 1 });
 ({ a: 0, b: 1, ...x });
 ({ a: 0, b: 1, ...{ ...x, c: 1, d: 2 } });
+({ a: 0, b: 1, ...(cond ? { c: 1, d: 2 } : x) });
 
 Object.assign({ a: 0 }, x, { b: 1 });
 Object.assign({ a: 0, b: 1 }, x);
 Object.assign({ a: 0, b: 1 }, { ...x, c: 1, d: 2 });
+Object.assign({ a: 0, b: 1 }, cond ? { c: 1, d: 2 } : x);
 ```
 
 👍 Examples of correct code for this rule:
 
 ``` ts
 declare const x: { foo: number; bar: number };
+declare const cond: boolean;
 
 ({ ...x });
 ({ ...x, a: 0, b: 1 });
 ({ a: 0, b: 1, ...{ c: 2, d: 3, ...{ e: 4, f: 5 } } });
+({ a: 0, b: 1, ...(cond ? { c: 2, d: 3 } : { e: 4, f: 5 }) });
 
 Object.assign(x);
 Object.assign(x, { a: 0, b: 1 });
 Object.assign({ a: 0, b: 1 }, { c: 2, d: 3, ...{ e: 4, f: 5 } });
+Object.assign({ a: 0, b: 1 }, cond ? { c: 2, d: 3 } : { e: 4, f: 5 });
 
 declare const anyValue: any;
 

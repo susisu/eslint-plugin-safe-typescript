@@ -33,6 +33,14 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
     // OK if all properties are known
     `({ a: 0, b: 1, ...{ c: 2, d: 3, ...{ e: 4, f: 5 } } })`,
     `Object.assign({ a: 0, b: 1 }, { c: 2, d: 3, ...{ e: 4, f: 5 } })`,
+    dedent`\
+      declare const cond: boolean;
+      ({ a: 0, b: 1, ...(cond ? { c: 2, d: 3 } : { e: 4, f: 5 }) });
+    `,
+    dedent`\
+      declare const cond: boolean;
+      Object.assign({ a: 0, b: 1 }, cond ? { c: 2, d: 3 } : { e: 4, f: 5 });
+    `,
     // OK for any
     dedent`\
       declare const x: any;
@@ -126,6 +134,34 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
         {
           messageId: "noObjectAssign",
           line: 2,
+          column: 31,
+        },
+      ],
+    },
+    {
+      code: dedent`\
+        declare const x: { foo: number; bar: number };
+        declare const cond: boolean;
+        ({ a: 0, b: 1, ...(cond ? { c: 1, d: 2 } : x) });
+      `,
+      errors: [
+        {
+          messageId: "noSpreadSyntax",
+          line: 3,
+          column: 16,
+        },
+      ],
+    },
+    {
+      code: dedent`\
+        declare const x: { foo: number; bar: number };
+        declare const cond: boolean;
+        Object.assign({ a: 0, b: 1 }, cond ? { c: 1, d: 2 } : x);
+      `,
+      errors: [
+        {
+          messageId: "noObjectAssign",
+          line: 3,
           column: 31,
         },
       ],
