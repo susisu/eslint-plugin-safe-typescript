@@ -1,3 +1,7 @@
+## 0.8.2 (2024-06-20)
+
+- Fix CJS interop issue
+
 ## 0.8.1 (2024-06-19)
 
 - `no-unsafe-object-property-overwrite`: Fix false positive for conditionals
