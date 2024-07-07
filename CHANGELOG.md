@@ -1,3 +1,7 @@
+## 0.8.3 (2024-07-08)
+
+- Upgrade dependencies
+
 ## 0.8.2 (2024-06-20)
 
 - Fix CJS interop issue
