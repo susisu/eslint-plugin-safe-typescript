@@ -2,8 +2,12 @@ import type { TSESTree } from "@typescript-eslint/utils";
 import { AST_NODE_TYPES, ESLintUtils } from "@typescript-eslint/utils";
 import ts from "typescript";
 
+export type PluginDocs = {
+  requiresTypeChecking?: boolean | undefined;
+};
+
 // eslint-disable-next-line new-cap
-export const createRule = ESLintUtils.RuleCreator(
+export const createRule = ESLintUtils.RuleCreator<PluginDocs>(
   (ruleName) =>
     `https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/${ruleName}/README.md`,
 );
