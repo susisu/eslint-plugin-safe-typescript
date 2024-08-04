@@ -1,3 +1,8 @@
+## 0.9.0 (2024-08-04)
+
+- **BREAKING** The minimum supported version of typescript-eslint is now `8.0.0`
+- Upgrade typescript-eslint to v8
+
 ## 0.8.3 (2024-07-08)
 
 - Upgrade dependencies
