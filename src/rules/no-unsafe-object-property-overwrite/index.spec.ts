@@ -4,10 +4,11 @@ import { getFixturesDir } from "../__tests__/utils";
 import rule from ".";
 
 const ruleTester = new RuleTester({
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    tsconfigRootDir: getFixturesDir(),
-    project: "./tsconfig.json",
+  languageOptions: {
+    parserOptions: {
+      tsconfigRootDir: getFixturesDir(),
+      project: "./tsconfig.json",
+    },
   },
 });
 
