@@ -42,13 +42,13 @@
     "prepublishOnly": "run-s format:check lint:check typecheck test build copy-dts"
   },
   "dependencies": {
-    "@types/eslint": "^8.56.10",
-    "@typescript-eslint/utils": "^7.15.0"
+    "@types/eslint": "^9.6.0",
+    "@typescript-eslint/utils": "^8.0.0"
   },
   "peerDependencies": {
-    "@typescript-eslint/parser": "^7.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
     "typescript": "*",
-    "typescript-eslint": "^7.0.0"
+    "typescript-eslint": "^8.0.0"
   },
   "peerDependenciesMeta": {
     "@typescript-eslint/parser": {
@@ -60,19 +60,19 @@
   },
   "devDependencies": {
     "@qnighy/dedent": "^0.1.1",
-    "@susisu/eslint-config": "^0.0.83",
-    "@types/node": "^20.14.10",
-    "@typescript-eslint/parser": "^7.15.0",
-    "@typescript-eslint/rule-tester": "^7.15.0",
+    "@susisu/eslint-config": "^0.0.85",
+    "@types/node": "^20.14.14",
+    "@typescript-eslint/parser": "^8.0.0",
+    "@typescript-eslint/rule-tester": "^8.0.0",
     "@vitest/coverage-v8": "^1.6.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.8.0",
     "eslint-plugin-eslint-plugin": "^6.2.0",
     "eslint-plugin-vitest": "^0.5.4",
-    "globals": "^15.8.0",
+    "globals": "^15.9.0",
     "npm-run-all2": "^6.2.2",
-    "prettier": "^3.3.2",
-    "tsup": "^8.1.0",
-    "typescript": "~5.5.3",
+    "prettier": "^3.3.3",
+    "tsup": "^8.2.4",
+    "typescript": "~5.5.4",
     "vitest": "^1.6.0"
   }
 }
