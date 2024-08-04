@@ -46,9 +46,9 @@
     "@typescript-eslint/utils": "^8.0.0"
   },
   "peerDependencies": {
-    "@typescript-eslint/parser": "8.0.0-alpha.41",
+    "@typescript-eslint/parser": "^8.0.0",
     "typescript": "*",
-    "typescript-eslint": "8.0.0-alpha.41"
+    "typescript-eslint": "^8.0.0"
   },
   "peerDependenciesMeta": {
     "@typescript-eslint/parser": {
