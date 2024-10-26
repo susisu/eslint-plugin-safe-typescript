@@ -1,3 +1,9 @@
+## 0.9.1 (2024-10-26)
+
+- Upgrade dependencies
+- Add name for the recommended config
+- Fix ordering in the `exports` field of `package.json`
+
 ## 0.9.0 (2024-08-04)
 
 - **BREAKING** The minimum supported version of typescript-eslint is now `8.0.0`
