@@ -42,11 +42,11 @@
     "prepublishOnly": "run-s format:check lint:check typecheck test build copy-dts"
   },
   "dependencies": {
-    "@types/eslint": "^9.6.1",
     "@typescript-eslint/utils": "^8.23.0"
   },
   "peerDependencies": {
     "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.10.0",
     "typescript": "*",
     "typescript-eslint": "^8.0.0"
   },
