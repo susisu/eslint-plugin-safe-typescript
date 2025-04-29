@@ -1,3 +1,7 @@
+## 0.9.4 (2025-04-29)
+
+- Upgrade dependencies
+
 ## 0.9.3 (2025-02-09)
 
 - Upgrade dependencies
