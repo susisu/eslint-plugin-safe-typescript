@@ -18,9 +18,6 @@
         "types": "./lib/index.d.cts",
         "default": "./lib/index.cjs"
       }
-    },
-    "./define-config-support": {
-      "types": "./lib/dts/define-config-support.d.ts"
     }
   },
   "files": [
@@ -38,8 +35,7 @@
     "test:dev": "vitest dev --coverage.enabled --coverage.reporter=text",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "build": "tsup",
-    "copy-dts": "rm -rf lib/dts/ && cp -r src/dts/ lib/dts/",
-    "prepublishOnly": "run-s format:check lint:check typecheck test build copy-dts"
+    "prepublishOnly": "run-s format:check lint:check typecheck test build"
   },
   "dependencies": {
     "@typescript-eslint/utils": "^8.33.0"
