@@ -8,6 +8,7 @@ type MessageIds = "noCopying" | "noMutation";
 const rule = createRule<Options, MessageIds>({
   name: "no-object-assign",
   meta: {
+    deprecated: true,
     type: "suggestion",
     docs: {
       description: "Disallow the use of Object.assign()",

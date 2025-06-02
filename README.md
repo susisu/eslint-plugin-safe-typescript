@@ -99,7 +99,7 @@ export default [
 
 | Name | Description | ✅ | 🔧 | 💭 |
 | --- | --- | --- | --- | --- |
-| [`no-object-assign`](https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/no-object-assign/README.md) | Disallow the use of `Object.assign()`. | ✅ | | |
+| [`no-object-assign-mutation`](https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/no-object-assign-mutation/README.md) | Disallow mutations using `Object.assign()`. | ✅ | | |
 | [`no-type-assertion`](https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/no-type-assertion/README.md) | Disallow type assertions like `x as T`. | ✅ | | |
 | [`no-unsafe-object-enum-method`](https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/no-unsafe-object-enum-method/README.md) | Disallow possibly unsafe property enumeration methods of `Object`. | ✅ | | 💭 |
 | [`no-unsafe-object-property-check`](https://github.com/susisu/eslint-plugin-safe-typescript/blob/main/src/rules/no-unsafe-object-property-check/README.md) | Disallow possibly unsafe property checks of object. | ✅ | | 💭 |
