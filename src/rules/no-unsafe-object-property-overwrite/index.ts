@@ -5,7 +5,7 @@ import {
   isAnyType,
   matchObjectMethodCall,
   possiblyContainsUnknownProperties,
-} from "../utils";
+} from "../utils.js";
 
 type Options = [
   {

@@ -1,5 +1,5 @@
 import { AST_NODE_TYPES } from "@typescript-eslint/utils";
-import { createRule, matchObjectMethodCall } from "../utils";
+import { createRule, matchObjectMethodCall } from "../utils.js";
 
 type Options = [];
 

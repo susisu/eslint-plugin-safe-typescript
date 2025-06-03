@@ -1,5 +1,5 @@
 import { ESLintUtils } from "@typescript-eslint/utils";
-import { createRule, hasIndexSignatures, isAnyType, isNonPrimitiveType } from "../utils";
+import { createRule, hasIndexSignatures, isAnyType, isNonPrimitiveType } from "../utils.js";
 
 type Options = [];
 

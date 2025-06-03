@@ -1,6 +1,6 @@
 import type { ESLint } from "eslint";
-import rules from "./rules";
-import configs from "./configs";
+import rules from "./rules/index.js";
+import configs from "./configs/index.js";
 
 const plugin = {
   rules,
@@ -8,4 +8,3 @@ const plugin = {
 } satisfies ESLint.Plugin;
 
 export default plugin;
-export { rules, configs };
