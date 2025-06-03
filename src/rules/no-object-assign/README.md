@@ -16,14 +16,14 @@ For example, it may mutate properties that are marked as `readonly`, or internal
 
 👎 Examples of incorrect code for this rule:
 
-``` ts
+```ts
 Object.assign({}, x);
 Object.assign(x, y);
 ```
 
 👍 Examples of correct code for this rule:
 
-``` ts
+```ts
 Object.assign;
 ```
 

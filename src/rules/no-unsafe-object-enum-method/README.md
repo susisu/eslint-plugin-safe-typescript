@@ -6,7 +6,7 @@ Disallow possibly unsafe property enumeration methods of `Object`.
 
 Suppose we have a type `Counts` and a function that reads it.
 
-``` ts
+```ts
 type Counts = {
   foo: number;
   bar: number;
@@ -23,7 +23,7 @@ function myFunc(counts: Counts): void {
 
 You can call `myFunc()` with an object that has additional properties.
 
-``` ts
+```ts
 const countsWithMetadata = {
   foo: 1,
   bar: 2,
@@ -41,17 +41,17 @@ Then the following problems will occur:
 
 To avoid these problems, enumerate only known properties of the object like below:
 
-``` ts
+```ts
 const countKeys = ["foo", "bar", "baz"] as const;
-type CountKey = typeof countKeys[number];
+type CountKey = (typeof countKeys)[number];
 // The same type as before
 type Counts = { [K in CountKey]: number };
 
 function myFunc(counts: Counts): void {
   // Use only known keys of Counts i.e. countKeys
   const keys = countKeys;
-  const values = countKeys.map(key => counts[key]);
-  const entrie = countKeys.map(key => [key, counts[key]]);
+  const values = countKeys.map((key) => counts[key]);
+  const entrie = countKeys.map((key) => [key, counts[key]]);
   // ...
 }
 ```
@@ -60,7 +60,7 @@ function myFunc(counts: Counts): void {
 
 👎 Examples of incorrect code for this rule:
 
-``` ts
+```ts
 declare const counts: { foo: number; bar: number; baz: number };
 Object.keys(counts);
 Object.values(counts);
@@ -69,7 +69,7 @@ Object.entries(counts);
 
 👍 Examples of correct code for this rule:
 
-``` ts
+```ts
 declare const anyValue: any;
 Object.keys(anyValue);
 Object.values(anyValue);
@@ -87,6 +87,7 @@ Object.entries(dictionary);
 ```
 
 ## Options
+
 ### `allowIndexSignatures`
 
 default = `true`
@@ -97,7 +98,7 @@ If the type has index signatures, enumerating properties is safe in most cases.
 However, there are still some cases where it becomes unsafe.
 For example:
 
-``` ts
+```ts
 const countsWithMetadata = {
   foo: 1,
   bar: 2,
@@ -117,7 +118,7 @@ const entries: [string, number][] = Object.entries(dictionary);
 
 👎 Examples of incorrect code for the `{ "allowIndexSignatures": false }` option:
 
-``` ts
+```ts
 declare const dictionary: { [key: string]: number };
 Object.keys(dictionary);
 Object.values(dictionary);

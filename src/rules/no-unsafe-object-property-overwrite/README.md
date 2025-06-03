@@ -6,7 +6,7 @@ Disallow possibly unsafe overwrites of object properties.
 
 For example, suppose we have a type `Data`, and `DataWithMetadata` that extends `Data`.
 
-``` ts
+```ts
 type Data = {
   foo: number;
   bar: number;
@@ -28,7 +28,7 @@ const metaA: string = withMetadata(dataA, "xxx").metadata;
 This seems pretty good.
 However, the definition of `withMetadata()` is actually unsafe, because it allows overwriting `metadata` with the properties of `data`.
 
-``` ts
+```ts
 const dataB = { foo: 0, bar: 1, metadata: 666 };
 // metaB = 666
 const metaB: string = withMetadata(dataB, "xxx").metadata;
@@ -36,7 +36,7 @@ const metaB: string = withMetadata(dataB, "xxx").metadata;
 
 To fix the function, use the spread syntax at the beginning of the object literal.
 
-``` ts
+```ts
 function withMetadata(data: Data, metadata: string): DataWithMetadata {
   // Write `...data` first so that it will not overwrite `metadata`.
   return { ...data, metadata };
@@ -45,7 +45,7 @@ function withMetadata(data: Data, metadata: string): DataWithMetadata {
 
 The same applies to [`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
 
-``` ts
+```ts
 function withMetadata(data: Data, metadata: string): DataWithMetadata {
   // Don't do `Object.assign({ metadata }, data)`
   return Object.assign({ ...data }, { metadata });
@@ -56,7 +56,7 @@ function withMetadata(data: Data, metadata: string): DataWithMetadata {
 
 👎 Examples of incorrect code for this rule:
 
-``` ts
+```ts
 declare const x: { foo: number; bar: number };
 declare const cond: boolean;
 
@@ -73,7 +73,7 @@ Object.assign({ a: 0, b: 1 }, cond ? { c: 1, d: 2 } : x);
 
 👍 Examples of correct code for this rule:
 
-``` ts
+```ts
 declare const x: { foo: number; bar: number };
 declare const cond: boolean;
 
@@ -99,6 +99,7 @@ declare const countsB: { [key: string]: number };
 ```
 
 ## Options
+
 ### `allowIndexSignatures`
 
 default = `true`
@@ -108,7 +109,7 @@ When set to `true`, allows object spreads in any position if the object's type h
 If the type has index signatures, object spreads are safe in most cases, while there are still some cases where it becomes unsafe.
 For example:
 
-``` ts
+```ts
 const countsA: { [key: string]: number } = {
   foo: 1,
   bar: 2,
@@ -127,7 +128,7 @@ const counts: { [key: string]: number } = { ...countsA, ...countsB };
 
 👎 Examples of incorrect code for the `{ "allowIndexSignatures": false }` option:
 
-``` ts
+```ts
 declare const countsA: { [key: string]: number };
 declare const countsB: { [key: string]: number };
 

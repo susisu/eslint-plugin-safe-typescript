@@ -6,10 +6,8 @@ Disallow possibly unsafe property checks of object.
 
 For example, suppose we have a union type `Data` and a function that reads it.
 
-``` ts
-type Data =
-  | { foo: number }
-  | { bar: string };
+```ts
+type Data = { foo: number } | { bar: string };
 
 function myFunc(data: Data): void {
   if ("foo" in data) {
@@ -26,7 +24,7 @@ Since the `in` operator narrows the type of `data`, we can access `data.foo` and
 
 However, you can call `myFunc()` like below, as the argument matches the `{ bar: string }` case.
 
-``` ts
+```ts
 const myData = { foo: "xxx", bar: "yyy" };
 myFunc(myData);
 ```
@@ -35,10 +33,8 @@ It's clear that this does not work correctly, because `myData` is treated as `{ 
 
 To remedy this, you should define `Data` as a [discriminated (tagged) union](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions), and use the tag to narrow the type of `data`.
 
-``` ts
-type Data =
-  | { type: "foo", value: number }
-  | { type: "bar", value: string };
+```ts
+type Data = { type: "foo"; value: number } | { type: "bar"; value: string };
 
 function myFunc(data: Data): void {
   if (data.type === "foo") {
@@ -55,14 +51,14 @@ function myFunc(data: Data): void {
 
 👎 Examples of incorrect code for this rule:
 
-``` ts
+```ts
 declare const counts: { foo: number } | { bar: string };
 "foo" in counts;
 ```
 
 👍 Examples of correct code for this rule:
 
-``` ts
+```ts
 declare const anyValue: any;
 "foo" in anyValue;
 
