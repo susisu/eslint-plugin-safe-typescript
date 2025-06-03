@@ -1,10 +1,10 @@
 import type { ESLint, Rule } from "eslint";
-import noObjectAssign from "./no-object-assign";
-import noObjectAssignMutation from "./no-object-assign-mutation";
-import noTypeAssertion from "./no-type-assertion";
-import noUnsafeObjectEnumMethod from "./no-unsafe-object-enum-method";
-import noUnsafeObjectPropertyCheck from "./no-unsafe-object-property-check";
-import noUnsafeObjectPropertyOverwrite from "./no-unsafe-object-property-overwrite";
+import noObjectAssign from "./no-object-assign/index.js";
+import noObjectAssignMutation from "./no-object-assign-mutation/index.js";
+import noTypeAssertion from "./no-type-assertion/index.js";
+import noUnsafeObjectEnumMethod from "./no-unsafe-object-enum-method/index.js";
+import noUnsafeObjectPropertyCheck from "./no-unsafe-object-property-check/index.js";
+import noUnsafeObjectPropertyOverwrite from "./no-unsafe-object-property-overwrite/index.js";
 
 function asRuleModule(rule: unknown): Rule.RuleModule {
   // eslint-disable-next-line @susisu/safe-typescript/no-type-assertion

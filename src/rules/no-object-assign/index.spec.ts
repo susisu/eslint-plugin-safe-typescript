@@ -1,5 +1,5 @@
 import { RuleTester } from "@typescript-eslint/rule-tester";
-import rule from ".";
+import rule from "./index.js";
 
 const ruleTester = new RuleTester();
 

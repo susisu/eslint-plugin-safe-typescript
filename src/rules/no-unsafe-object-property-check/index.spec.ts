@@ -1,7 +1,7 @@
 import { RuleTester } from "@typescript-eslint/rule-tester";
 import { dedent } from "@qnighy/dedent";
-import { getFixturesDir } from "../__tests__/utils";
-import rule from ".";
+import { getFixturesDir } from "../__tests__/utils.js";
+import rule from "./index.js";
 
 const ruleTester = new RuleTester({
   languageOptions: {

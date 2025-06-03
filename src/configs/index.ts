@@ -1,5 +1,5 @@
 import type { ESLint } from "eslint";
-import recommended from "./recommended";
+import recommended from "./recommended.js";
 
 const configs = {
   recommended,
