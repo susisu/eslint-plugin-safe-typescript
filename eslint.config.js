@@ -3,7 +3,10 @@ import eslintPluginPlugin from "eslint-plugin-eslint-plugin";
 import vitestPlugin from "@vitest/eslint-plugin";
 import globals from "globals";
 
-export default config({ tsconfigRootDir: import.meta.dirname }, [
+export default config(
+  {
+    tsconfigRootDir: import.meta.dirname,
+  },
   {
     plugins: {
       "eslint-plugin": eslintPluginPlugin,
@@ -42,4 +45,4 @@ export default config({ tsconfigRootDir: import.meta.dirname }, [
       },
     },
   },
-]);
+);
