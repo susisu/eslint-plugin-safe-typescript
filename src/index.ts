@@ -8,4 +8,3 @@ const plugin = {
 } satisfies ESLint.Plugin;
 
 export default plugin;
-export { rules, configs };
