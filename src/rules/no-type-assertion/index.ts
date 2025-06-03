@@ -24,17 +24,17 @@ const rule = createRule<Options, MessageIds>({
       const annotation = node.typeAnnotation;
       // `as const` is a safe expression
       if (
-        annotation.type === AST_NODE_TYPES.TSTypeReference &&
-        annotation.typeName.type === AST_NODE_TYPES.Identifier &&
-        annotation.typeName.name === "const"
+        annotation.type === AST_NODE_TYPES.TSTypeReference
+        && annotation.typeName.type === AST_NODE_TYPES.Identifier
+        && annotation.typeName.name === "const"
       ) {
         return;
       }
       // `as unknown` is safe
       // `as any` is unsafe, but that is because of `any`, not `as`
       if (
-        annotation.type === AST_NODE_TYPES.TSUnknownKeyword ||
-        annotation.type === AST_NODE_TYPES.TSAnyKeyword
+        annotation.type === AST_NODE_TYPES.TSUnknownKeyword
+        || annotation.type === AST_NODE_TYPES.TSAnyKeyword
       ) {
         return;
       }

@@ -26,8 +26,8 @@ export function possiblyContainsUnknownProperties(node: TSESTree.Expression): bo
     });
   } else if (node.type === AST_NODE_TYPES.ConditionalExpression) {
     return (
-      possiblyContainsUnknownProperties(node.consequent) ||
-      possiblyContainsUnknownProperties(node.alternate)
+      possiblyContainsUnknownProperties(node.consequent)
+      || possiblyContainsUnknownProperties(node.alternate)
     );
   } else {
     return true;

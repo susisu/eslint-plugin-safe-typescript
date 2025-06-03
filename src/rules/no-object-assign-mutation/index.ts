@@ -25,8 +25,8 @@ const rule = createRule<Options, MessageIds>({
         return;
       }
       if (
-        node.arguments.length >= 2 &&
-        node.arguments[0].type !== AST_NODE_TYPES.ObjectExpression
+        node.arguments.length >= 2
+        && node.arguments[0].type !== AST_NODE_TYPES.ObjectExpression
       ) {
         context.report({
           node,
