@@ -1,3 +1,15 @@
+## 0.10.0 (2025-06-04)
+
+- Upgrade dependencies
+- Add suggestion fixer for `no-unsafe-object-property-overwrite`
+- Add `no-object-assign-mutation` rule, which replaces `no-object-assign`
+- Deprecate `no-object-assign` rule
+  - Use `no-object-assign-mutation` and [`prefer-object-spread`](https://eslint.org/docs/latest/rules/prefer-object-spread) instead
+- **BREAKING** The package is now Pure ESM
+- **BREAKING** Update recommended config
+  - Replace `no-object-assign` with `no-object-assign-mutation`
+- **BREAKING** Remove [`eslint-define-config`](https://github.com/eslint-types/eslint-define-config) support
+
 ## 0.9.4 (2025-04-29)
 
 - Upgrade dependencies
