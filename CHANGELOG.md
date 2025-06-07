@@ -1,4 +1,4 @@
-## 0.10.0 (2025-06-04)
+## 0.10.0 (2025-06-07)
 
 - Upgrade dependencies
 - Add suggestion fixer for `no-unsafe-object-property-overwrite`
