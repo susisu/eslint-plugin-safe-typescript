@@ -70,6 +70,15 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
           messageId: "noSpreadSyntax",
           line: 2,
           column: 10,
+          suggestions: [
+            {
+              messageId: "suggestMoveSpreadSyntax",
+              output: dedent`\
+                declare const x: { foo: number; bar: number };
+                ({ ...x,a: 0,  b: 1 });
+              `,
+            },
+          ],
         },
       ],
     },
@@ -96,6 +105,15 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
           messageId: "noSpreadSyntax",
           line: 2,
           column: 16,
+          suggestions: [
+            {
+              messageId: "suggestMoveSpreadSyntax",
+              output: dedent`\
+                declare const x: { foo: number; bar: number };
+                ({ ...x,a: 0, b: 1,  });
+              `,
+            },
+          ],
         },
       ],
     },
@@ -123,6 +141,15 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
           messageId: "noSpreadSyntax",
           line: 2,
           column: 16,
+          suggestions: [
+            {
+              messageId: "suggestMoveSpreadSyntax",
+              output: dedent`\
+                declare const x: { foo: number; bar: number };
+                ({ ...{ ...x, c: 1, d: 2 },a: 0, b: 1,  });
+              `,
+            },
+          ],
         },
       ],
     },
@@ -150,6 +177,16 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
           messageId: "noSpreadSyntax",
           line: 3,
           column: 16,
+          suggestions: [
+            {
+              messageId: "suggestMoveSpreadSyntax",
+              output: dedent`\
+                declare const x: { foo: number; bar: number };
+                declare const cond: boolean;
+                ({ ...(cond ? { c: 1, d: 2 } : x),a: 0, b: 1,  });
+              `,
+            },
+          ],
         },
       ],
     },
@@ -164,6 +201,69 @@ ruleTester.run("no-unsafe-object-property-overwrite", rule, {
           messageId: "noObjectAssign",
           line: 3,
           column: 31,
+        },
+      ],
+    },
+    // Multiple errors
+    {
+      code: dedent`\
+        declare const x: { foo: number; bar: number };
+        declare const y: { foo: number; bar: number };
+        declare const z: { foo: number; bar: number };
+        ({ ...x, a: 0, ...y, b: 1, ...z });
+      `,
+      errors: [
+        {
+          messageId: "noSpreadSyntax",
+          line: 4,
+          column: 16,
+          suggestions: [
+            {
+              messageId: "suggestMoveSpreadSyntax",
+              output: dedent`\
+                declare const x: { foo: number; bar: number };
+                declare const y: { foo: number; bar: number };
+                declare const z: { foo: number; bar: number };
+                ({ ...x, ...y,a: 0,  b: 1, ...z });
+              `,
+            },
+          ],
+        },
+        {
+          messageId: "noSpreadSyntax",
+          line: 4,
+          column: 28,
+          suggestions: [
+            {
+              messageId: "suggestMoveSpreadSyntax",
+              output: dedent`\
+                declare const x: { foo: number; bar: number };
+                declare const y: { foo: number; bar: number };
+                declare const z: { foo: number; bar: number };
+                ({ ...x, ...z,a: 0, ...y, b: 1,  });
+              `,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: dedent`\
+        declare const x: { foo: number; bar: number };
+        declare const y: { foo: number; bar: number };
+        declare const z: { foo: number; bar: number };
+        Object.assign(x, { a: 0 }, y, { b: 1 }, z);
+      `,
+      errors: [
+        {
+          messageId: "noObjectAssign",
+          line: 4,
+          column: 28,
+        },
+        {
+          messageId: "noObjectAssign",
+          line: 4,
+          column: 41,
         },
       ],
     },

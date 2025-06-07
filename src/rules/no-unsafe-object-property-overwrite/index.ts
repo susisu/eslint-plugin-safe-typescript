@@ -1,4 +1,4 @@
-import { AST_NODE_TYPES, ESLintUtils } from "@typescript-eslint/utils";
+import { AST_NODE_TYPES, AST_TOKEN_TYPES, ESLintUtils } from "@typescript-eslint/utils";
 import {
   createRule,
   hasOnlyIndexSignatures,
@@ -13,7 +13,7 @@ type Options = [
   },
 ];
 
-type MessageIds = "noSpreadSyntax" | "noObjectAssign";
+type MessageIds = "noSpreadSyntax" | "noObjectAssign" | "suggestMoveSpreadSyntax";
 
 const rule = createRule<Options, MessageIds>({
   name: "no-unsafe-object-property-overwrite",
@@ -23,11 +23,13 @@ const rule = createRule<Options, MessageIds>({
       description: "Disallow possibly unsafe overwrites of object properties",
       requiresTypeChecking: true,
     },
+    hasSuggestions: true,
     messages: {
       noSpreadSyntax:
         "The spread syntax possibly overwrites properties with unknown values. Consider moving this to the beginning of the object literal.",
       noObjectAssign:
         "Object.assign() possibly overwrites properties with unknown values. Consider moving this to the beginning of the argument list.",
+      suggestMoveSpreadSyntax: "Move the spread syntax to the front.",
     },
     schema: [
       {
@@ -60,7 +62,13 @@ const rule = createRule<Options, MessageIds>({
         if (options.allowIndexSignatures && hasOnlyIndexSignatures(checker, tsNodeType)) {
           return;
         }
-        // Start from 1 because it's safe if the first spread possibly contains unknown properties.
+        // Nothing to check.
+        if (node.properties.length <= 1) {
+          return;
+        }
+        const firstNonSpreadProp = node.properties.find(
+          (prop) => prop.type !== AST_NODE_TYPES.SpreadElement,
+        );
         for (let i = 1; i < node.properties.length; i++) {
           const prop = node.properties[i];
           if (prop.type !== AST_NODE_TYPES.SpreadElement) {
@@ -73,6 +81,29 @@ const rule = createRule<Options, MessageIds>({
           context.report({
             node: prop,
             messageId: "noSpreadSyntax",
+            suggest:
+              firstNonSpreadProp ?
+                [
+                  {
+                    messageId: "suggestMoveSpreadSyntax",
+                    *fix(fixer) {
+                      const nextToken = context.sourceCode.getTokenAfter(prop);
+                      const hasTrailingComma =
+                        !!nextToken
+                        && nextToken.type === AST_TOKEN_TYPES.Punctuator
+                        && nextToken.value === ",";
+                      yield fixer.insertTextBefore(
+                        firstNonSpreadProp,
+                        context.sourceCode.getText(prop) + ",",
+                      );
+                      yield fixer.remove(prop);
+                      if (hasTrailingComma) {
+                        yield fixer.removeRange(nextToken.range);
+                      }
+                    },
+                  },
+                ]
+              : [],
           });
         }
       },
@@ -81,7 +112,10 @@ const rule = createRule<Options, MessageIds>({
         if (method !== "assign") {
           return;
         }
-        // Start from 1 because it's safe if the first argument possibly contains unknown properties.
+        // Nothing to check.
+        if (node.arguments.length <= 1) {
+          return;
+        }
         for (let i = 1; i < node.arguments.length; i++) {
           const arg = node.arguments[i];
           // Safe if the argument contains only known properties.
