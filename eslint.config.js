@@ -23,6 +23,8 @@ export default config(
     },
     rules: {
       ...eslintPluginPlugin.configs.recommended.rules,
+      // For now, `defaultOptions` are handled by `RuleCreator` from @typescript-eslint/utils, not ESLint.
+      "eslint-plugin/require-meta-default-options": "off",
     },
   },
   {
