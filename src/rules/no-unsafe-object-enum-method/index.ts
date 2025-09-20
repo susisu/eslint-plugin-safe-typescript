@@ -35,6 +35,8 @@ const rule = createRule<Options, MessageIds>({
         properties: {
           allowIndexSignatures: {
             type: "boolean",
+            description:
+              "When set to `true`, allows `Object.keys()`, `Object.values()`, and `Object.entries()` if the object's type has index signatures e.g. `{ [key: string]: number }`",
           },
         },
       },

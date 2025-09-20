@@ -92,7 +92,7 @@ Object.entries(dictionary);
 
 default = `true`
 
-When set to `true`, allows `Object.keys()`, `Object.values()`, and `Object.entries()` if the object's type has [index signatures](https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures) like `{ [key: string]: number }`.
+When set to `true`, allows `Object.keys()`, `Object.values()`, and `Object.entries()` if the object's type has [index signatures](https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures) e.g. `{ [key: string]: number }`.
 
 If the type has index signatures, enumerating properties is safe in most cases.
 However, there are still some cases where it becomes unsafe.

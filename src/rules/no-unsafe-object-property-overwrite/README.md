@@ -104,7 +104,7 @@ declare const countsB: { [key: string]: number };
 
 default = `true`
 
-When set to `true`, allows object spreads in any position if the object's type has only [index signatures](https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures) like `{ [key: string]: number }`.
+When set to `true`, allows object spreads in any position if the object's type has only [index signatures](https://www.typescriptlang.org/docs/handbook/2/objects.html#index-signatures) e.g. `{ [key: string]: number }`.
 
 If the type has index signatures, object spreads are safe in most cases, while there are still some cases where it becomes unsafe.
 For example:
