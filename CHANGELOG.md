@@ -1,3 +1,7 @@
+## 0.10.1 (2025-09-20)
+
+- Upgrade dependencies
+
 ## 0.10.0 (2025-06-07)
 
 - Upgrade dependencies
