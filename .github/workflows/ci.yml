@@ -1,19 +1,21 @@
 name: CI
+
 on:
   push:
   pull_request:
   release:
     types:
       - created
+
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
-          - '20'
-          - '22'
-          - '24'
+          - 20
+          - 22
+          - 24
     steps:
       - uses: actions/checkout@v5
       - uses: pnpm/action-setup@v4
@@ -22,7 +24,7 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+          cache: pnpm
       - run: pnpm install
       - run: pnpm format:check
       - run: pnpm lint:check

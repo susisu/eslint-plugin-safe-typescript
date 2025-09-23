@@ -23,8 +23,8 @@ jobs:
           version: 10
       - uses: actions/setup-node@v5
         with:
-          node-version: '22'
-          cache: 'pnpm'
+          node-version: 22
+          cache: pnpm
       - name: update npm
         run: npm install -g npm@latest
       - run: pnpm install
