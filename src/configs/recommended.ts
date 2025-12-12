@@ -1,6 +1,6 @@
-import type { ESLint, Linter } from "eslint";
+import type { Linter } from "eslint";
 
-const config: ESLint.ConfigData & Linter.Config = {
+const config: Linter.Config = {
   name: "@susisu/safe-typescript/recommended",
   rules: {
     "@susisu/safe-typescript/no-object-assign-mutation": "error",

@@ -1,4 +1,4 @@
-import type { ESLint, Rule } from "eslint";
+import type { Rule } from "eslint";
 import noObjectAssign from "./no-object-assign/index.js";
 import noObjectAssignMutation from "./no-object-assign-mutation/index.js";
 import noTypeAssertion from "./no-type-assertion/index.js";
@@ -18,6 +18,6 @@ const rules = {
   "no-unsafe-object-enum-method": asRuleModule(noUnsafeObjectEnumMethod),
   "no-unsafe-object-property-check": asRuleModule(noUnsafeObjectPropertyCheck),
   "no-unsafe-object-property-overwrite": asRuleModule(noUnsafeObjectPropertyOverwrite),
-} satisfies ESLint.Plugin["rules"];
+};
 
 export default rules;

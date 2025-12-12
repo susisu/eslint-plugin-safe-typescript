@@ -1,8 +1,10 @@
-import type { ESLint } from "eslint";
+import type { Linter } from "eslint";
 import recommended from "./recommended.js";
 
-const configs = {
+const configs: {
+  recommended: Linter.Config;
+} = {
   recommended,
-} satisfies ESLint.Plugin["configs"];
+};
 
 export default configs;
