@@ -26,9 +26,9 @@ pnpm add -D @susisu/eslint-plugin-safe-typescript
 2. Add `@susisu/eslint-plugin-safe-typescript` to plugins
 3. (Optional) Add `parserOptions.project` if you enable rules that use type information.
 
-`eslint.config.js`:
-
 ``` js
+// eslint.config.js
+
 import tsEslint from "typescript-eslint";
 import safeTsPlugin from "@susisu/eslint-plugin-safe-typescript";
 
@@ -50,30 +50,15 @@ export default [
 ];
 ```
 
-`.eslintrc`:
-
-``` json
-{
-  "parser": "@typescript-eslint/parser", // (1)
-  "parserOptions": {
-    "project": true // (3)
-  },
-  "plugins": ["@susisu/safe-typescript"], // (2)
-  "rules": {
-    "@susisu/safe-typescript/no-object-assign": "error"
-  }
-}
-```
-
 ## Recommended configuration
 
 This plugin also provides a configuration set for the recommended rules (see [Rules](#rules) for which rules are recommended).
 
 Since some rules in the recommended configuration require type information, `parserOptions.project` must be set in your config.
 
-`eslint.config.js`
-
 ``` js
+// eslint.config.js
+
 export default [
   safeTsPlugin.configs.recommended,
   // or extend in `rules`
@@ -83,14 +68,6 @@ export default [
   //   },
   // },
 ];
-```
-
-`eslintrc`
-
-``` json
-{
-  "extends": ["plugin:@susisu/safe-typescript/recommended"]
-}
 ```
 
 ## Rules
