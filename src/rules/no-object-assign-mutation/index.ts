@@ -16,8 +16,8 @@ const rule = createRule<Options, MessageIds>({
       noMutation: "Object.assign() mutates the first argument without knowing its type.",
     },
     schema: [],
+    defaultOptions: [],
   },
-  defaultOptions: [],
   create: (context) => ({
     CallExpression: (node) => {
       const method = matchObjectMethodCall(node);

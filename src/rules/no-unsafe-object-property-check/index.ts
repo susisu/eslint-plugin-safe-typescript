@@ -18,8 +18,8 @@ const rule = createRule<Options, MessageIds>({
         "Type narrowing using the `in` operator is possibly unsafe. Consider using discriminated unions.",
     },
     schema: [],
+    defaultOptions: [],
   },
-  defaultOptions: [],
   create: (context) => {
     const services = ESLintUtils.getParserServices(context);
     const checker = services.program.getTypeChecker();

@@ -17,8 +17,8 @@ const rule = createRule<Options, MessageIds>({
       noTypeAssertion: "A type assertion `x as T` possibly involves unsafe downcasting.",
     },
     schema: [],
+    defaultOptions: [],
   },
-  defaultOptions: [],
   create: (context) => {
     const check = (node: TSESTree.TSAsExpression | TSESTree.TSTypeAssertion): void => {
       const annotation = node.typeAnnotation;

@@ -41,12 +41,12 @@ const rule = createRule<Options, MessageIds>({
         },
       },
     ],
+    defaultOptions: [
+      {
+        allowIndexSignatures: true,
+      },
+    ],
   },
-  defaultOptions: [
-    {
-      allowIndexSignatures: true,
-    },
-  ],
   create: (context, [options]) => {
     const services = ESLintUtils.getParserServices(context);
     const checker = services.program.getTypeChecker();
