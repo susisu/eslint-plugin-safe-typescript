@@ -1,3 +1,8 @@
+## 0.11.0 (2026-04-19)
+
+- Support ESLint v10
+- Upgrade dependencies
+
 ## 0.10.1 (2025-09-20)
 
 - Upgrade dependencies
